@@ -1,4 +1,8 @@
 import ProductList from '../components/ProductList';
+import React from 'react'
+import Login from './Login';
+import CrearUsuario from './CrearUsuario';
+import RecordarPass from './RecordarPass';
 
 const Home = () => {
   return (
@@ -11,7 +15,11 @@ const Home = () => {
           Ver productos
         </button>
       </section>
-
+    <>
+      <Login></Login>
+      <CrearUsuario></CrearUsuario>
+      <RecordarPass></RecordarPass>
+    </>
       {/* Lista de productos */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Productos destacados</h2>
