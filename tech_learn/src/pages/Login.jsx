@@ -23,6 +23,8 @@ const Login = () => {
       alert('Credenciales incorrectas');
     }
   };
+import React from 'react'
+import CardLogin from './../components/CardLogin';
 
   return (
     <form onSubmit={handleSubmit}>
@@ -32,5 +34,10 @@ const Login = () => {
     </form>
   );
 };
+    <>
+      <CardLogin></CardLogin>
+    </>
+  )
+}
 
 export default Login;

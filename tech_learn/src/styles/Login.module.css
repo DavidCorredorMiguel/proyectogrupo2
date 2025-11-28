@@ -1,0 +1,50 @@
+.card {
+    width: 50%;
+    margin-top: 5rem;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.cardheader {
+    font-size: xx-large;
+    text-decoration: underline;
+    color: green;
+}
+
+input {
+    padding: 0.15rem;
+}
+
+.email {
+    width: 50%;
+    font-weight: bold;
+}
+
+.pass {
+    width: 30%;
+}
+
+.muestrapass {
+    margin-left: 0.5rem;
+    padding: 0.25rem;
+    font-weight: bold;
+    background-color: greenyellow;
+    border-radius: 10%;
+}
+
+.iniciasesion {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 10%;
+}

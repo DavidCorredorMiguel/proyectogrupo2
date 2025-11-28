@@ -2,27 +2,23 @@ import React from "react";
 import { Button, Card } from "react-bootstrap";
 import style from "../styles/Login.module.css";
 
-function CardLogin() {
+function CardCrearUsuario() {
   return (
     <>
       <Card className={style.card}>
-        <Card.Header className={style.cardheader}>Iniciar Sesión</Card.Header>
+        <Card.Header className={style.cardheader}>Crear Usuario</Card.Header>
         <Card.Body>
-          <Card.Text>Pon tu correo y contraseña para iniciar sesión.</Card.Text>
+          <Card.Text>Pon tu correo y contraseña para crear usuario.</Card.Text>
           <h2>Correo Electronico</h2>
           <input type="email" className={style.email} />
           <h2>Contraseña</h2>
           <input type="password" className={style.pass} />
           <Button className={style.muestrapass}>Mostar/Ocultar</Button>
-          <Card.Text>
-            ¿Has olvidado tu contraseña?
-            <a href="./../pages/RecordarPass">Recordar Contraseña</a>
-          </Card.Text>
-          <Button className={style.iniciasesion}>Iniciar Sesión</Button>
+          <br /><br /><Button className={style.iniciasesion}>Crear Usuario</Button>
         </Card.Body>
       </Card>
     </>
   );
 }
 
-export default CardLogin;
+export default CardCrearUsuario;
