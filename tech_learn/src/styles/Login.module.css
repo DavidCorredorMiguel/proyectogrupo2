@@ -1,0 +1,37 @@
+.card {
+    width: 50%;
+    margin-top: 5rem;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.cardheader {
+    font-size: xx-large;
+    text-decoration: underline;
+    color: green;
+}
+
+.iniciasesion {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+.email {
+    width: 50%;
+    font-weight: bold;
+}
+
+.muestrapass {
+    font-weight: bold;
+}
