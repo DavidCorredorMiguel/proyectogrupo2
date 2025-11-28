@@ -6,7 +6,7 @@ import RecordarPass from './RecordarPass';
 
 const Home = () => {
   return (
-    <div>
+    <>
       {/* Banner/Hero */}
       <section className="bg-primary text-white rounded p-5 mb-4 text-center">
         <h1 className="font-bold text-4xl mb-3">Bienvenido a Tech-learn</h1>
@@ -15,20 +15,15 @@ const Home = () => {
           Ver productos
         </button>
       </section>
-    <>
-      <Login></Login>
       <CrearUsuario></CrearUsuario>
       <RecordarPass></RecordarPass>
-    </>
-  )
-}
 
       {/* Lista de productos */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Productos destacados</h2>
         <ProductList />
       </section>
-    </div>
+    </>
   );
 };
 
