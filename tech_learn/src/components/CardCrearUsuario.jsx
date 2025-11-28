@@ -14,7 +14,7 @@ function CardCrearUsuario() {
           <h2>Contraseña</h2>
           <input type="password" className={style.pass} />
           <Button className={style.muestrapass}>Mostar/Ocultar</Button>
-          <Button className={style.iniciasesion}>Crear Usuario</Button>
+          <br /><br /><Button className={style.iniciasesion}>Crear Usuario</Button>
         </Card.Body>
       </Card>
     </>
