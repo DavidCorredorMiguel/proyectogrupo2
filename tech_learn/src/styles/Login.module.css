@@ -19,12 +19,8 @@
     color: green;
 }
 
-.iniciasesion {
-    background-color: blue;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    padding: 0.5rem;
+input {
+    padding: 0.15rem;
 }
 
 .email {
@@ -32,6 +28,23 @@
     font-weight: bold;
 }
 
+.pass {
+    width: 30%;
+}
+
 .muestrapass {
+    margin-left: 0.5rem;
+    padding: 0.25rem;
     font-weight: bold;
+    background-color: greenyellow;
+    border-radius: 10%;
+}
+
+.iniciasesion {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 10%;
 }
