@@ -21,6 +21,7 @@
 
 input {
     padding: 0.15rem;
+    background-color: white;
 }
 
 .email {

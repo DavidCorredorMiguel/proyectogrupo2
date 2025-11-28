@@ -1,6 +1,8 @@
-import { mockUsers } from '../mocks/users';
-import { useAuthStore } from '../store/authStore';
-import { useNavigate } from 'react-router-dom';
+import { mockUsers } from "../mocks/users";
+import { useAuthStore } from "../store/authStore";
+import { useNavigate } from "react-router-dom";
+import React from "react";
+import CardLogin from "./../components/CardLogin";
 
 const Login = () => {
   const login = useAuthStore((state) => state.login);
@@ -9,8 +11,8 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const email = formData.get('email');
-    const password = formData.get('password');
+    const email = formData.get("email");
+    const password = formData.get("password");
 
     const user = mockUsers.find(
       (u) => u.email === email && u.password === password
@@ -18,26 +20,22 @@ const Login = () => {
 
     if (user) {
       login(user);
-      navigate('/');
+      navigate("/");
     } else {
-      alert('Credenciales incorrectas');
+      alert("Credenciales incorrectas");
     }
   };
-import React from 'react'
-import CardLogin from './../components/CardLogin';
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="email" type="email" placeholder="Email" required />
-      <input name="password" type="password" placeholder="Password" required />
-      <button type="submit">Entrar</button>
-    </form>
-  );
-};
     <>
       <CardLogin></CardLogin>
+      <form onSubmit={handleSubmit}>
+        <input name="email" type="email" placeholder="Email" required />
+        <input name="password" type="password" placeholder="Password" required />
+        <button type="submit">Entrar</button>
+      </form>
     </>
-  )
-}
+  );
+};
 
 export default Login;
