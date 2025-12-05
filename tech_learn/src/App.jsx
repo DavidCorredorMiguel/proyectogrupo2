@@ -3,6 +3,11 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import RecordarPass from './pages/RecordarPass';
+import Cesta from './pages/Cesta';
+import FinalizarCompra from './pages/FinalizarCompra';
+import TarjetasAprender from './pages/TarjetasAprender';
+import CreaEditaTarjeta from './pages/CreaEditaTarjeta';
 
 const App = () => {
   return (
@@ -12,6 +17,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/recordarpass" element={<RecordarPass />} />
+          <Route path="/cesta" element={<Cesta />} />
+          <Route path="/creaeditatarjeta" element={<CreaEditaTarjeta />} />
+          <Route path="/finalizarcompra" element={<FinalizarCompra />} />
+          <Route path="/tarjetasaprender" element={<TarjetasAprender />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -3,7 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import style from "../styles/Login.module.css";
 import { mockUsers } from "../mocks/users";
 import { useAuthStore } from "../store/authStore";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CardLogin = () => {
   const login = useAuthStore((state) => state.login);
@@ -41,7 +41,7 @@ const CardLogin = () => {
             <Button className={style.muestrapass}>Mostar/Ocultar</Button>
             <Card.Text>
               ¿Has olvidado tu contraseña?
-              <a href="./../pages/RecordarPass">Recordar Contraseña</a>
+              <Link to="/recordarpass">Recordar Contraseña</Link>
             </Card.Text>
             <Button type="submit" className={style.iniciasesion}>Iniciar Sesión</Button>
           </form>
