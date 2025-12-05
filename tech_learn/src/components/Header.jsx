@@ -1,5 +1,6 @@
 import { useAuthStore } from '../store/authStore';
 import { useNavigate } from 'react-router-dom';
+import logoImg from '../assets/images/logo.png';
 
 const Header = () => {
   const { isLoggedIn, user, logout } = useAuthStore();
@@ -11,13 +12,12 @@ const Header = () => {
   };
 
   return (
-    <header className="d-flex justify-content-between align-items-center p-3 bg-dark text-white sticky top-0 z-50">
+    <header className="d-flex justify-content-between align-items-center p-3 bg-gradient-to-r from-slate-950 to-[#008B8B] text-white sticky top-0 z-50">
       <div 
         className="logo cursor-pointer font-bold text-xl hover:opacity-80" 
         onClick={() => navigate('/')}
       >
-        LOGO
-      </div>
+      <img src={logoImg}  className="h-20 w-auto object-contain" alt="Logo Tech & Learn" />      </div>
 
       <div className="search-bar flex-grow-1 mx-4" style={{ maxWidth: '600px' }}>
         <div className="input-group">
