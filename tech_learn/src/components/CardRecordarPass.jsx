@@ -9,11 +9,13 @@ function CardRecordarPass() {
         <Card.Header className={style.cardheader}>Recordar Contraseña</Card.Header>
         <Card.Body>
           <Card.Text>Pon tu nueva contraseña 2 veces para cambiarla. Debe ser igual.</Card.Text>
+          <h2>Correo Electronico</h2>
+          <input name="email" className={style.email} type="email" placeholder="Email" required />
           <h2>Contraseña Nueva</h2>
-          <input type="password" className={style.pass} />
+          <input name="password" className={style.pass} type="password" placeholder="Password" required />
           <Button className={style.muestrapass}>Mostar/Ocultar</Button>
           <h2>Repetir Contraseña Nueva</h2>
-          <input type="password" className={style.pass} />
+          <input name="password2" className={style.pass} type="password" placeholder="Password" required />
           <Button className={style.muestrapass}>Mostar/Ocultar</Button>
           <br /><br /><Button className={style.iniciasesion}>Cambiar Contraseña</Button>
         </Card.Body>
