@@ -16,8 +16,6 @@ const Home = () => {
         </button>
       </section>
       <CrearUsuario></CrearUsuario>
-      <RecordarPass></RecordarPass>
-
       {/* Lista de productos */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Productos destacados</h2>
