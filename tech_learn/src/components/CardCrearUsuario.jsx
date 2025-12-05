@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import style from "../styles/Login.module.css";
 import { mockUsers } from "../mocks/users";
@@ -8,7 +8,14 @@ import { useNavigate } from "react-router-dom";
 const CardCrearUsuario = () => {
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate();
+  // Estado para mostrar/ocultar contraseña
+  const [showPassword, setShowPassword] = useState(false);
+  // Estado para almacenar la contraseña escrita
+  const [password, setPassword] = useState("");
 
+  const toggleVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -44,31 +51,14 @@ const CardCrearUsuario = () => {
             <h3>Nombre de Usuario</h3>
             <input name="name" type="text" placeholder="Nombre" required />
             <h3>Correo Electronico</h3>
-            <input
-              name="email"
-              className={style.email}
-              type="email"
-              placeholder="Email"
-              required
-            />
+            <input name="email" className={style.email} type="email" placeholder="Email" required />
             <h3>Contraseña</h3>
-            <input
-              name="password"
-              className={style.pass}
-              type="password"
-              placeholder="Contraseña"
-              required
-            />
-            {/* Botón para mostrar/ocultar la contraseña.
-             Lleva type="button" para que NO envíe el formulario. */}
-            <Button type="button" className={style.muestrapass}>
-              Mostar/Ocultar
-            </Button>
-            <br />
-            <br />
-            <Button type="submit" className={style.iniciasesion}>
-              Registrarse
-            </Button>
+            <input name="password" className={style.pass} type={showPassword ? "text" : "password"} 
+              placeholder="Password" required value={password} 
+              onChange={(e) => setPassword(e.target.value)} />
+            <Button type="button" className={style.muestrapass} onClick={toggleVisibility}>
+              {showPassword ? "Ocultar" : "Mostrar"}</Button>
+            <br /><br /><Button type="submit" className={style.iniciasesion}>Registrarse</Button>
           </form>
         </Card.Body>
       </Card>

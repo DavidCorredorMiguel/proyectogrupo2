@@ -8,17 +8,14 @@ import { Link, useNavigate } from "react-router-dom";
 const CardLogin = () => {
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate();
-
   // Estado para mostrar/ocultar contraseña
   const [showPassword, setShowPassword] = useState(false);
-
   // Estado para almacenar la contraseña escrita
   const [password, setPassword] = useState("");
 
   const toggleVisibility = () => {
     setShowPassword((prev) => !prev);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -28,7 +25,6 @@ const CardLogin = () => {
     const user = mockUsers.find(
       (u) => u.email === email && u.password === formPassword
     );
-
     if (user) {
       login(user);
       navigate("/");
@@ -50,8 +46,7 @@ const CardLogin = () => {
             placeholder="Password" required value={password}
             onChange={(e) => setPassword(e.target.value)} />
           <Button type="button" className={style.muestrapass} onClick={toggleVisibility}>
-            {showPassword ? "Ocultar" : "Mostrar"}
-          </Button>
+            {showPassword ? "Ocultar" : "Mostrar"}</Button>
           <Card.Text>
             ¿Has olvidado tu contraseña?{" "}
             <Link to="/recordarpass">Recordar Contraseña</Link>
