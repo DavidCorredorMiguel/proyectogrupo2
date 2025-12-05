@@ -3,7 +3,7 @@ export const mockProducts = [
     id: 1,
     name: "Portátil Gaming",
     price: 899.99,
-    image: "../assets/images/portatil.jpg",
+    image: "/images/portatil.jpg",
     category: "Electrónica",
     description: "Portátil gaming con RTX 4060",
   },
