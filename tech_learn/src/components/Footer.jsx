@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import logoImg from '../assets/images/logo.png';
 
 const Footer = () => {
   const handleCopy = () => {
@@ -14,7 +15,7 @@ const Footer = () => {
         <div className="row">
           {/* Logo */}
           <div className="col-md-3 mb-3 mb-md-0">
-            <div className="font-bold text-xl mb-2">LOGO</div>
+            <div className="font-bold text-xl mb-2"><img src={logoImg}  className="h-20 w-auto object-contain" alt="Logo Tech & Learn" /> </div>
             <p className="text-gray-400 text-sm">Tu tienda de confianza</p>
           </div>
 

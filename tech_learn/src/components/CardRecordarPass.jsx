@@ -33,7 +33,7 @@ const CardRecordarPass = () => {
       (u) => u.email === email && u.password === password
     );
 
-    if (password == formData.get("password")) {
+    if (password == formData.get("password2")) {
       if (user) {
         login(user);
         navigate("/");
