@@ -1,13 +1,13 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import RecordarPass from "./pages/RecordarPass";
-import Cesta from "./pages/Cesta";
-import FinalizarCompra from "./pages/FinalizarCompra";
-import TarjetasAprender from "./pages/TarjetasAprender";
-import CreaEditaTarjeta from "./pages/CreaEditaTarjeta";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import RecordarPass from './pages/RecordarPass';
+import Cesta from './pages/Cesta';
+import FinalizarCompra from './pages/FinalizarCompra';
+import TarjetasAprender from './pages/TarjetasAprender';
+import CreaEditaTarjeta from './pages/CreaEditaTarjeta';
 
 const App = () => {
   return (
