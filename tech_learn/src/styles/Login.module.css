@@ -13,38 +13,52 @@
 }
 
 .cardheader {
-    font-size: xx-large;
-    text-decoration: underline;
-    color: green;
+  font-size: xx-large;
+  text-decoration: underline;
+  color: green;
 }
 
 input {
-    padding: 0.15rem;
-    background-color: white;
+  padding: 0.15rem;
+  background-color: white;
 }
 
 .email {
-    width: 50%;
-    font-weight: bold;
+  width: 50%;
+  font-weight: bold;
 }
 
 .pass {
-    width: 30%;
+  width: 30%;
 }
 
 .muestrapass {
-    margin-left: 0.5rem;
-    padding: 0.25rem;
-    font-weight: bold;
-    background-color: greenyellow;
-    border-radius: 10%;
+  margin-left: 0.5rem;
+  padding: 0.25rem;
+  font-weight: bold;
+  background-color: greenyellow;
+  border-radius: 10%;
 }
 
 .iniciasesion {
-    background-color: blue;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    padding: 0.5rem;
-    border-radius: 10%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: 10%;
+}
+
+.nocuenta {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: blue;
+  color: white;
+  padding: 0.7rem;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
