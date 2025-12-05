@@ -42,57 +42,26 @@ const CardLogin = () => {
       <Card.Header className={style.cardheader}>Iniciar Sesión</Card.Header>
       <Card.Body>
         <Card.Text>Pon tu correo y contraseña para iniciar sesión.</Card.Text>
-
         <form onSubmit={handleSubmit}>
           <h2>Correo Electronico</h2>
-          <input
-            name="email"
-            className={style.email}
-            type="email"
-            placeholder="Email"
-            required
-          />
-
+          <input name="email" className={style.email} type="email" placeholder="Email" required />
           <h2>Contraseña</h2>
-          <div className={style.passwordContainer}>
-            <input
-              name="password"
-              className={style.pass}
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-
-            <Button
-              type="button"
-              className={style.muestrapass}
-              onClick={toggleVisibility}
-            >
-              {showPassword ? "Ocultar" : "Mostrar"}
-            </Button>
-          </div>
-
+          <input name="password" className={style.pass} type={showPassword ? "text" : "password"}
+            placeholder="Password" required value={password}
+            onChange={(e) => setPassword(e.target.value)} />
+          <Button type="button" className={style.muestrapass} onClick={toggleVisibility}>
+            {showPassword ? "Ocultar" : "Mostrar"}
+          </Button>
           <Card.Text>
             ¿Has olvidado tu contraseña?{" "}
             <Link to="/recordarpass">Recordar Contraseña</Link>
           </Card.Text>
-
-          <Button type="submit" className={style.iniciasesion}>
-            Iniciar Sesión
-          </Button>
+          <Button type="submit" className={style.iniciasesion}>Iniciar Sesión</Button>
         </form>
-
         <div className={style.nocuenta}>
           ¿No tienes cuenta?
-          <Button
-            type="button"
-            className={style.registrarse}
-            onClick={() => navigate("/register")}
-          >
-            Regístrate
-          </Button>
+          <Button type="button" className={style.registrarse} onClick={() => navigate("/register")}>
+            Regístrate</Button>
         </div>
       </Card.Body>
     </Card>
