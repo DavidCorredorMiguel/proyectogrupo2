@@ -1,28 +1,54 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 import style from "../styles/Login.module.css";
+import { mockUsers } from "../mocks/users";
+import { useAuthStore } from "../store/authStore";
+import { useNavigate } from "react-router-dom";
 
-function CardLogin() {
+const CardLogin = () => {
+  const login = useAuthStore((state) => state.login);
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    const user = mockUsers.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (user) {
+      login(user);
+      navigate("/");
+    } else {
+      alert("Credenciales incorrectas");
+    }
+  };
+
   return (
     <>
       <Card className={style.card}>
         <Card.Header className={style.cardheader}>Iniciar Sesión</Card.Header>
         <Card.Body>
           <Card.Text>Pon tu correo y contraseña para iniciar sesión.</Card.Text>
-          <h2>Correo Electronico</h2>
-          <input type="email" className={style.email} />
-          <h2>Contraseña</h2>
-          <input type="password" className={style.pass} />
-          <Button className={style.muestrapass}>Mostar/Ocultar</Button>
-          <Card.Text>
-            ¿Has olvidado tu contraseña?
-            <a href="./../pages/RecordarPass">Recordar Contraseña</a>
-          </Card.Text>
-          <Button className={style.iniciasesion}>Iniciar Sesión</Button>
+          <form onSubmit={handleSubmit}>
+            <h2>Correo Electronico</h2>
+            <input name="email" className={style.email} type="email" placeholder="Email" required />
+            <h2>Contraseña</h2>
+            <input name="password" className={style.pass} type="password" placeholder="Password" required />
+            <Button className={style.muestrapass}>Mostar/Ocultar</Button>
+            <Card.Text>
+              ¿Has olvidado tu contraseña?
+              <a href="./../pages/RecordarPass">Recordar Contraseña</a>
+            </Card.Text>
+            <Button type="submit" className={style.iniciasesion}>Iniciar Sesión</Button>
+          </form>
         </Card.Body>
       </Card>
     </>
   );
-}
+};
 
 export default CardLogin;
