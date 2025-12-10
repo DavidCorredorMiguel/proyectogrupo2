@@ -32,7 +32,7 @@ const CardLogin = () => {
       alert("Credenciales incorrectas");
     }
   };
-
+  
   return (
     <Card className={style.card}>
       <Card.Header className={style.cardheader}>Iniciar Sesión</Card.Header>
@@ -55,7 +55,7 @@ const CardLogin = () => {
         </form>
         <div className={style.nocuenta}>
           ¿No tienes cuenta?
-          <Button type="button" className={style.registrarse} onClick={() => navigate("/register")}>
+          <Button type="button" className={style.iniciasesion} onClick={() => navigate("/register")}>
             Regístrate</Button>
         </div>
       </Card.Body>
