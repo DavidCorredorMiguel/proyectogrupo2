@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import RecordarPass from './pages/RecordarPass';
 import DetallesProducto from './pages/DetallesProducto';
 import Cesta from './pages/Cesta';
+import TarjetasPago from './pages/TarjetasPago';
 import FinalizarCompra from './pages/FinalizarCompra';
 import TarjetasAprender from './pages/TarjetasAprender';
 import CreaEditaTarjeta from './pages/CreaEditaTarjeta';
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/recordarpass" element={<RecordarPass />} />
           <Route path="/producto/:id" element={<DetallesProducto />} />
           <Route path="/cesta" element={<Cesta />} />
+          <Route path="/tarjetaspago" element={<TarjetasPago />} />
           <Route path="/creaeditatarjeta" element={<CreaEditaTarjeta />} />
           <Route path="/finalizarcompra" element={<FinalizarCompra />} />
           <Route path="/tarjetasaprender" element={<TarjetasAprender />} />
