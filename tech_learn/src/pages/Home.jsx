@@ -1,8 +1,5 @@
-import ProductList from '../components/ProductList';
 import React from 'react'
-import Login from './Login';
-import CrearUsuario from './CrearUsuario';
-import RecordarPass from './RecordarPass';
+import ProductList from '../components/ProductList';
 
 const Home = () => {
   return (
