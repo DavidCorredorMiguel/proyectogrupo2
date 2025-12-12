@@ -7,7 +7,7 @@ const NavPages = () => {
     { path: '/', label: 'Inicio', icon: faHome },
     { path: '/productos', label: 'Productos', icon: faBoxOpen },
     { path: '/cesta', label: 'Cesta', icon: faShoppingCart },
-    { path: '/contacto', label: 'Contacto', icon: faEnvelope }
+    { path: '/aboutus', label: 'Sobre Nosotros', icon: faEnvelope }
   ];
 
   return (
