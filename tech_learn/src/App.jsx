@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import RecordarPass from './pages/RecordarPass';
 import Cesta from './pages/Cesta';
+import TarjetasPago from './pages/TarjetasPago';
 import FinalizarCompra from './pages/FinalizarCompra';
 import TarjetasAprender from './pages/TarjetasAprender';
 import CreaEditaTarjeta from './pages/CreaEditaTarjeta';
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/recordarpass" element={<RecordarPass />} />
           <Route path="/cesta" element={<Cesta />} />
+          <Route path="/tarjetaspago" element={<TarjetasPago />} />
           <Route path="/creaeditatarjeta" element={<CreaEditaTarjeta />} />
           <Route path="/finalizarcompra" element={<FinalizarCompra />} />
           <Route path="/tarjetasaprender" element={<TarjetasAprender />} />
