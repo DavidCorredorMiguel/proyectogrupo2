@@ -50,7 +50,7 @@ const CestaProduct = () => {
           <tbody>
             {cart.map((item) => (
               <tr key={item.id} className={style.tr1cesta}>
-                <td>
+                <td className={style.td1cesta}>
                   <img src={item.image} alt={item.name} 
                     className="card-img" style={{ height: '50px' }} />
                 </td>

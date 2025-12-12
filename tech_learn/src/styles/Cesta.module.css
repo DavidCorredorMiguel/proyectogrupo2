@@ -17,11 +17,15 @@
 
 .tablacesta td {
    padding: 0.5rem;
-    border: 0.1rem solid black;
+   border: 0.1rem solid black;
 }
 
 .tr1cesta {
     background-color: lightgreen;
+}
+
+.td1cesta {
+    background-color: white;
 }
 
 .tr2cesta {
