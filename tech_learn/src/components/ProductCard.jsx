@@ -5,15 +5,11 @@ import { Link } from "react-router-dom";
 const ProductCard = ({ product, onAddToCart  }) => {
   return (
     <div className="card h-100 hover:shadow-lg transition-all">
-      <img src={product.image} alt={product.name}
-        className="card-img-top object-cover" style={{ height: "200px" }} />
       <Link to={`/producto/${product.id}`}>
         <img src={product.image} alt={product.name}
           className="card-img-top object-cover" style={{ height: "200px" }} />
       </Link>
       <div className="card-body d-flex flex-column">
-        <span className="badge bg-secondary mb-2 w-fit">{product.category}</span>
-        <h5 className="card-title font-semibold">{product.name}</h5>+
         <Link to={`/producto/${product.id}`} className="text-decoration-none text-dark">
           <h5 className="card-title font-semibold">{product.name}</h5>
         </Link>
