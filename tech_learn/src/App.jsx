@@ -8,6 +8,7 @@ import Cesta from './pages/Cesta';
 import FinalizarCompra from './pages/FinalizarCompra';
 import TarjetasAprender from './pages/TarjetasAprender';
 import CreaEditaTarjeta from './pages/CreaEditaTarjeta';
+import AboutUs from './pages/AboutUs';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/creaeditatarjeta" element={<CreaEditaTarjeta />} />
           <Route path="/finalizarcompra" element={<FinalizarCompra />} />
           <Route path="/tarjetasaprender" element={<TarjetasAprender />} />
+          <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
       </Layout>
     </BrowserRouter>
