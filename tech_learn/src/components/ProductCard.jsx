@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onAddToCart  }) => {
   return (
     <div className="card h-100 hover:shadow-lg transition-all">
       <img src={product.image} alt={product.name} 
@@ -12,7 +12,8 @@ const ProductCard = ({ product }) => {
         <p className="card-text text-gray-600 text-sm flex-grow-1">{product.description}</p>
         <div className="d-flex justify-content-between align-items-center mt-3">
           <span className="text-xl font-bold text-primary">{product.price}€</span>
-          <button className="btn btn-primary hover:scale-105 transition-all">
+          <button className="btn btn-primary hover:scale-105 transition-all"
+            onClick={() => onAddToCart(product)}>
             <FontAwesomeIcon icon={faCartPlus} className="me-2" />Añadir
           </button>
         </div>

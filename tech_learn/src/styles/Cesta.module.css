@@ -1,0 +1,29 @@
+.titulopag {
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.tablacesta {
+    width: 100%;
+    text-align: center;
+    border: 0.1rem solid black;
+    font-weight: bold;
+}
+
+.tablacesta thead {
+    background-color: aqua;
+    border: 0.1rem solid black;
+}
+
+.tablacesta td {
+   padding: 0.5rem;
+    border: 0.1rem solid black;
+}
+
+.tr1cesta {
+    background-color: lightgreen;
+}
+
+.tr2cesta {
+    background-color: lightgray;
+}
