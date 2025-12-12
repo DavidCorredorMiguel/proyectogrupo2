@@ -1,16 +1,16 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import RecordarPass from './pages/RecordarPass';
-import DetallesProducto from './pages/DetallesProducto';
-import Cesta from './pages/Cesta';
-import TarjetasPago from './pages/TarjetasPago';
-import FinalizarCompra from './pages/FinalizarCompra';
-import TarjetasAprender from './pages/TarjetasAprender';
-import CreaEditaTarjeta from './pages/CreaEditaTarjeta';
-import AboutUs from './pages/AboutUs';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import RecordarPass from "./pages/RecordarPass";
+import DetallesProducto from "./pages/DetallesProducto";
+import Cesta from "./pages/Cesta";
+import TarjetasPago from "./pages/TarjetasPago";
+import FinalizarCompra from "./pages/FinalizarCompra";
+import TarjetasAprender from "./pages/TarjetasAprender";
+import CreaEditaTarjeta from "./pages/CreaEditaTarjeta";
+import AboutUs from "./pages/AboutUs";
 
 const App = () => {
   return (

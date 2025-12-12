@@ -12,9 +12,7 @@ function FinalizarCompra() {
     <>
       <div className="container mt-5 text-center">
         <h2>Compra realizada</h2>
-
         <p>Gracias por su compra.</p>
-
         <button onClick={handleFinish} className="btn btn-primary mt-3">
           Volver a inicio
         </button>
