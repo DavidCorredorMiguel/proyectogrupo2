@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faBoxOpen, faShoppingCart, 
-  faEnvelope, } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faBoxOpen, 
+  faEnvelope, faIdCardClip, } from "@fortawesome/free-solid-svg-icons";
 
 const NavPages = () => {
   const navItems = [
     { path: "/", label: "Inicio", icon: faHome },
     { path: "/productos", label: "Productos", icon: faBoxOpen },
-    { path: "/cesta", label: "Cesta", icon: faShoppingCart },
+    { path: "/tarjetasaprender", label: "Tarjetas Aprender", icon: faIdCardClip },
     { path: "/aboutus", label: "Sobre Nosotros", icon: faEnvelope },
   ];
 
