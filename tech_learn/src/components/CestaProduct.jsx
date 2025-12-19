@@ -9,8 +9,7 @@ const CestaProduct = () => {
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setCart(getCart());
-  }, []);
+    setCart(getCart());}, []);
 
   const handleQuantityChange = (id, value) => {
     const updated = updateQuantity(id, Number(value));
@@ -23,8 +22,7 @@ const CestaProduct = () => {
   };
   // Calcular total general
   const totalGeneral = cart
-    .reduce((sum, item) => sum + item.price * item.quantity, 0)
-    .toFixed(2);
+    .reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
   
   const handleContinuar = () => {
     navigate("/tarjetaspago"); // navegar a TarjetasPago
@@ -58,15 +56,13 @@ const CestaProduct = () => {
                 <td>{item.price} €</td>
                 <td>
                   <input type="number" min="1" value={item.quantity}
-                    onChange={(e) =>
-                      handleQuantityChange(item.id, e.target.value)
-                    } style={{ width: "60px", backgroundColor: "lightblue" }}
+                    onChange={(e) => handleQuantityChange(item.id, e.target.value)} 
+                      style={{ width: "60px", backgroundColor: "lightblue" }}
                   />
                 </td>
                 <td>{(item.price * item.quantity).toFixed(2)}€</td>
                 <td>
-                  <button className="btn btn-danger" 
-                    onClick={() => handleRemove(item.id)}>
+                  <button className="btn btn-danger" onClick={() => handleRemove(item.id)}>
                     Borrar</button>
                 </td>
               </tr>

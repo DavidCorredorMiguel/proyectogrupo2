@@ -37,12 +37,8 @@ const CardRecordarPass = () => {
       if (user) {
         login(user);
         navigate("/");
-      } else {
-        alert("Credenciales incorrectas");
-      }
-    } else {
-      alert("Las contraseñas no coinciden");
-    }
+      } else { alert("Credenciales incorrectas"); }
+    } else { alert("Las contraseñas no coinciden"); }
   };
 
   return (
