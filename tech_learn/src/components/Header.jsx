@@ -2,13 +2,17 @@ import { useState } from 'react';
 import { useAuthStore } from '../store/authStore';
 import { useNavigate } from 'react-router-dom';
 import logoImg from '../assets/images/logo.png';
+import { mockProducts } from '../mocks/products';
+
+// Extraer categorías únicas del mock
+const categories = [...new Set(mockProducts.map(p => p.category))];
 
 const Header = () => {
   const { isLoggedIn, user, logout } = useAuthStore();
   const navigate = useNavigate();
   
   const [searchTerm, setSearchTerm] = useState('');
-  const [filterType, setFilterType] = useState('nombre');
+  const [selectedCategory, setSelectedCategory] = useState('todas');
 
   const handleLogout = () => {
     logout();
@@ -17,7 +21,7 @@ const Header = () => {
 
   const handleSearch = () => {
     if (!searchTerm.trim()) return;
-    navigate(`/productos?filtro=${filterType}&q=${encodeURIComponent(searchTerm)}`);
+    navigate(`/productos?categoria=${encodeURIComponent(selectedCategory)}&q=${encodeURIComponent(searchTerm)}`);
   };
 
   const handleKeyDown = (e) => {
@@ -36,12 +40,14 @@ const Header = () => {
         <div className="input-group">
           <select 
             className="form-select" 
-            style={{ maxWidth: '120px' }}
-            value={filterType}
-            onChange={(e) => setFilterType(e.target.value)}
+            style={{ maxWidth: '180px' }}
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
           >
-            <option value="nombre">Nombre</option>
-            <option value="categoria">Categoría</option>
+            <option value="todas">Todas las categorías</option>
+            {categories.map(cat => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
           </select>
           <input 
             type="text" 

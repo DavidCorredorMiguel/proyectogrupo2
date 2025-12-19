@@ -12,27 +12,26 @@ const normalize = (str) => {
 const Productos = () => {
   const [searchParams] = useSearchParams();
   
-  const filtro = searchParams.get('filtro') || 'nombre';
+  const categoria = searchParams.get('categoria') || 'todas';
   const query = searchParams.get('q') || '';
 
   const filteredProducts = mockProducts.filter((product) => {
     const searchNorm = normalize(query);
+    const nameMatch = normalize(product.name).includes(searchNorm);
     
-    switch (filtro) {
-      case 'nombre':
-        return normalize(product.name).includes(searchNorm);
-      case 'categoria':
-        return normalize(product.category).includes(searchNorm);
-      default:
-        return true;
+    if (categoria === 'todas') {
+      return nameMatch;
     }
+    
+    return nameMatch && product.category === categoria;
   });
 
   return (
     <div className="container py-4">
       <h1 className="text-2xl font-semibold mb-2">Resultados de búsqueda</h1>
       <p className="text-gray-600 mb-4">
-        {filteredProducts.length} producto(s) encontrado(s) para "{query}" en {filtro}
+        {filteredProducts.length} producto(s) encontrado(s) para "{query}"
+        {categoria !== 'todas' && ` en ${categoria}`}
       </p>
       
       {filteredProducts.length > 0 ? (
