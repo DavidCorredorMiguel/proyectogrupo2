@@ -11,6 +11,7 @@ import FinalizarCompra from "./pages/FinalizarCompra";
 import TarjetasAprender from "./pages/TarjetasAprender";
 import CreaEditaTarjeta from "./pages/CreaEditaTarjeta";
 import AboutUs from "./pages/AboutUs";
+import Chatbot from "./components/Chatbot";
 
 const App = () => {
   return (
@@ -29,6 +30,8 @@ const App = () => {
           <Route path="/tarjetasaprender" element={<TarjetasAprender />} />
           <Route path="/aboutus" element={<AboutUs />} />
         </Routes>
+        {/* Aquí añadimos el chatbot */}
+        <Chatbot />
       </Layout>
     </BrowserRouter>
   );
