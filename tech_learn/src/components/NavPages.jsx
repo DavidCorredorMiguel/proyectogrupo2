@@ -12,7 +12,7 @@ const NavPages = () => {
   ];
 
   return (
-    <nav className="bg-secondary py-2">
+    <nav className="bg-dark py-2">
       <div className="container">
         <ul className="nav justify-content-center gap-4">
           {navItems.map((item) => (
