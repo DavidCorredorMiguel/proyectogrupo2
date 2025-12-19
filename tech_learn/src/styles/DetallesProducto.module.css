@@ -7,18 +7,14 @@
   font-family: Arial, sans-serif;
 }
 
-/* ===========================
-   IMAGEN PRINCIPAL
-=========================== */
+/* IMAGEN PRINCIPAL */
 .imgPrincipal {
   width: 260px;
   margin: 0 auto;
   display: block;
 }
 
-/* ===========================
-   MINI GALERÍA (los 4 puntos)
-=========================== */
+/* MINI GALERÍA (los 4 puntos) */
 .gallery {
   display: flex;
   justify-content: center;
@@ -33,9 +29,7 @@
   border-radius: 50%;
 }
 
-/* ===========================
-   NOMBRE + BLOQUE DE COMPRA
-=========================== */
+/* NOMBRE + BLOQUE DE COMPRA */
 .topCompra {
   margin-top: 1rem;
 }
@@ -45,9 +39,7 @@
   font-weight: bold;
 }
 
-/* ===========================
-   PRECIO + CANTIDAD + BOTÓN
-=========================== */
+/* PRECIO + CANTIDAD + BOTÓN */
 .rowCompra {
   display: flex;
   justify-content: center;
@@ -90,26 +82,20 @@
   background: #0068d4;
 }
 
-/* ===========================
-   SUBTÍTULOS (subrayados)
-=========================== */
+/* SUBTÍTULOS (subrayados) */
 .subtitulo {
   margin-top: 2rem;
   font-weight: bold;
   text-decoration: underline;
 }
 
-/* ===========================
-   TEXTO NORMAL
-=========================== */
+/* TEXTO NORMAL */
 .texto {
   margin-top: 0.3rem;
   font-size: 0.95rem;
 }
 
-/* ===========================
-   TABLA DE CARACTERÍSTICAS
-=========================== */
+/* TABLA DE CARACTERÍSTICAS */
 .tabla {
   margin: 1rem auto;
   border-collapse: collapse;
@@ -127,9 +113,7 @@
   font-weight: bold;
 }
 
-/* ===========================
-   RESEÑAS
-=========================== */
+/* RESEÑAS */
 .reviews {
   display: flex;
   justify-content: center;

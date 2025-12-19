@@ -29,13 +29,9 @@ const CardCrearUsuario = () => {
       alert("El email ya está registrado");
       return;
     }
-
     const newUser = {
       id: mockUsers.length + 1,
-      name,
-      email,
-      password,
-    };
+      name, email, password,};
 
     mockUsers.push(newUser); // Solo persiste en memoria esta sesión
     login(newUser);

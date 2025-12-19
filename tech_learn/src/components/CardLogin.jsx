@@ -28,9 +28,7 @@ const CardLogin = () => {
     if (user) {
       login(user);
       navigate("/");
-    } else {
-      alert("Credenciales incorrectas");
-    }
+    } else { alert("Credenciales incorrectas"); }
   };
   
   return (

@@ -4,9 +4,7 @@ import { useNavigate } from "react-router-dom";
 function FinalizarCompra() {
   const navigate = useNavigate();
 
-  const handleFinish = () => {
-    navigate("/");
-  };
+  const handleFinish = () => { navigate("/"); };
 
   return (
     <>
@@ -14,8 +12,7 @@ function FinalizarCompra() {
         <h2>Compra realizada</h2>
         <p>Gracias por su compra.</p>
         <button onClick={handleFinish} className="btn btn-primary mt-3">
-          Volver a inicio
-        </button>
+          Volver a inicio</button>
       </div>
     </>
   );

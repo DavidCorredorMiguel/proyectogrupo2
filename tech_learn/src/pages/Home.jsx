@@ -1,5 +1,5 @@
-import React from 'react'
-import ProductList from '../components/ProductList';
+import React from "react";
+import ProductList from "../components/ProductList";
 
 const Home = () => {
   return (
@@ -9,8 +9,7 @@ const Home = () => {
         <h1 className="font-bold text-4xl mb-3">Bienvenido a Tech-learn</h1>
         <p className="text-xl mb-4">Los mejores productos al mejor precio</p>
         <button className="btn btn-light btn-lg hover:scale-105 transition-all">
-          Ver productos
-        </button>
+          Ver productos</button>
       </section>
       {/* Lista de productos */}
       <section>

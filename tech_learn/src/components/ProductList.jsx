@@ -15,8 +15,7 @@ const ProductList = () => {
     <div className="row">
       {mockProducts.map(product => (
         <div className="col-md-4 mb-4" key={product.id}>
-          <ProductCard  product={product} 
-            onAddToCart={handleAddToCart} />
+          <ProductCard product={product} onAddToCart={handleAddToCart} />
         </div>
       ))}
     </div>
