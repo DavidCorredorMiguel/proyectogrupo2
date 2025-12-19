@@ -3,6 +3,8 @@ import { useAuthStore } from '../store/authStore';
 import { useNavigate } from 'react-router-dom';
 import logoImg from '../assets/images/logo.png';
 import { mockProducts } from '../mocks/products';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 // Extraer categorías únicas del mock
 const categories = [...new Set(mockProducts.map(p => p.category))];
@@ -65,6 +67,8 @@ const Header = () => {
           <span className="hidden md:inline">👤 {user?.name}</span>
           <button className="btn btn-outline-light transition-all hover:scale-105" 
             onClick={handleLogout}>Cerrar Sesión</button>
+            <button onClick={() => navigate('/cesta')}>
+              <FontAwesomeIcon icon={faShoppingCart} />Cesta</button>
         </div>
       ) : (
         <button className="btn btn-primary transition-all hover:scale-105" 
