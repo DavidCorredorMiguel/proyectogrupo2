@@ -4,8 +4,7 @@ import ProductList from '../components/ProductList';
 
 const normalize = (str) => {
   return str
-    .toLowerCase()
-    .normalize('NFD')
+    .toLowerCase().normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '');
 };
 
