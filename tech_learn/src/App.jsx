@@ -12,6 +12,7 @@ import TarjetasAprender from "./pages/TarjetasAprender";
 import CreaEditaTarjeta from "./pages/CreaEditaTarjeta";
 import AboutUs from "./pages/AboutUs";
 import Chatbot from "./components/Chatbot";
+import Productos from "./pages/Productos";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/recordarpass" element={<RecordarPass />} />
           <Route path="/producto/:id" element={<DetallesProducto />} />
+          <Route path="/productos" element={<Productos />} />
           <Route path="/cesta" element={<Cesta />} />
           <Route path="/tarjetaspago" element={<TarjetasPago />} />
           <Route path="/creaeditatarjeta" element={<CreaEditaTarjeta />} />
