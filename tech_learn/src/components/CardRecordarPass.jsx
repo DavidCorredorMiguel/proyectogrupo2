@@ -35,10 +35,17 @@ const CardRecordarPass = () => {
     const formData = new FormData(e.target);
     const email = formData.get("email");
 
-    if (password !== password2) {
-      alert("Las contraseñas no coinciden");
-      return;
-    }
+    const user = updatePassword.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (password == formData.get("password2")) {
+      if (user) {
+        login(user);
+        navigate("/");
+      } else { alert("Credenciales incorrectas"); }
+    } else { alert("Las contraseñas no coinciden"); }
+  
 
     // Llamada al servicio
     const updatedUser = updatePassword(email, password);

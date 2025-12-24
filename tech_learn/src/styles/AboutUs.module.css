@@ -1,0 +1,13 @@
+.au {
+    text-align: center;
+}
+
+.logoau {
+    width: 20rem;
+    display: flex;
+    justify-self: center;
+}
+
+.au p {
+    font-size: larger;
+}

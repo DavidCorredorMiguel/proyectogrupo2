@@ -35,7 +35,6 @@ const CardCrearUsuario = () => {
       return;
     }
 
-
     // Solo persiste en memoria esta sesión
     login(newUser);
     navigate("/");

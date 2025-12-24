@@ -8,20 +8,7 @@
   font-family: Arial, sans-serif;
 }
 
-/* ===========================
-   HERO (IMAGEN + COMPRA)
-=========================== */
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-  margin-bottom: 3rem;
-}
-
-/* ===========================
-   IMAGEN
-=========================== */
+/* IMAGEN PRINCIPAL */
 .imgPrincipal {
   width: 100%;
   max-width: 420px;
@@ -29,9 +16,7 @@
   display: block;
 }
 
-/* ===========================
-   GALERÍA
-=========================== */
+/* MINI GALERÍA (los 4 puntos) */
 .gallery {
   display: flex;
   justify-content: center;
@@ -46,9 +31,7 @@
   border-radius: 50%;
 }
 
-/* ===========================
-   BLOQUE COMPRA
-=========================== */
+/* NOMBRE + BLOQUE DE COMPRA */
 .topCompra {
   display: flex;
   flex-direction: column;
@@ -57,8 +40,17 @@
 }
 
 .nombre {
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* PRECIO + CANTIDAD + BOTÓN */
+.rowCompra {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 0.8rem;
 }
 
 .precio {
@@ -105,27 +97,21 @@
   background: #0056b3;
 }
 
-/* ===========================
-   SUBTÍTULOS
-=========================== */
+/* SUBTÍTULOS (subrayados) */
 .subtitulo {
   font-size: 1.2rem;
   font-weight: 600;
   margin: 2rem 0 0.6rem;
 }
 
-/* ===========================
-   TEXTO
-=========================== */
+/* TEXTO NORMAL */
 .texto {
   font-size: 0.95rem;
   color: #444;
   line-height: 1.5;
 }
 
-/* ===========================
-   TABLA CARACTERÍSTICAS
-=========================== */
+/* TABLA DE CARACTERÍSTICAS */
 .tabla {
   margin: 1rem 0;
   border-collapse: collapse;
