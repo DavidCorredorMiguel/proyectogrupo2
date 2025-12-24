@@ -53,3 +53,5 @@ export const updatePassword = (email, newPassword) => {
 
   return updatedUser;
 };
+
+
