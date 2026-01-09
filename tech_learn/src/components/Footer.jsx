@@ -17,10 +17,9 @@ const Footer = () => {
           {/* Logo */}
           <div className="col-md-3 mb-3 mb-md-0">
             <div className="font-bold text-xl mb-2">
-              <img src={logoImg} className="h-20 w-auto object-contain"
-                alt="Logo Tech & Learn" />
+              <img src={logoImg} className="h-20 w-auto object-contain" alt="Logo Tech & Learn" />
             </div>
-            <p className="text-gray-400 text-sm">Tu tienda de confianza</p>
+            <p className="text-gray-400 text-sm">Tu tienda de confianza y centro de aprendizaje</p>
           </div>
           {/* Páginas */}
           <div className="col-md-3 mb-3 mb-md-0">
@@ -37,14 +36,14 @@ const Footer = () => {
                   Productos</a>
               </li>
               <li>
-                <a href="/cesta"
+                <a href="/tarjetasaprender"
                   className="text-gray-400 hover:text-white no-underline">
-                  Cesta</a>
+                  Tarjetas Aprender</a>
               </li>
               <li>
-                <a href="/contacto"
+                <a href="/aboutus"
                   className="text-gray-400 hover:text-white no-underline">
-                  Contacto</a>
+                  Sobre Nosotros</a>
               </li>
             </ul>
           </div>
@@ -52,24 +51,27 @@ const Footer = () => {
           <div className="col-md-3 mb-3 mb-md-0">
             <h6 className="font-semibold mb-2">Síguenos</h6>
             <div className="d-flex gap-3 text-2xl">
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="https://www.facebook.com/?locale=es_ES" 
+                className="text-gray-400 hover:text-white">
                 <FontAwesomeIcon icon={faFacebook} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="https://x.com/?lang=es" 
+                className="text-gray-400 hover:text-white">
                 <FontAwesomeIcon icon={faTwitter} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="https://www.instagram.com/" 
+                className="text-gray-400 hover:text-white">
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="https://es.linkedin.com/" 
+                className="text-gray-400 hover:text-white">
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
             </div>
           </div>
           {/* Copyright */}
           <div className="col-md-3">
-            <p className="text-gray-400 text-sm">
-              © 2025 - Tech-learn
+            <p className="text-gray-400 text-sm">© 2025 - Tech-learn
               <FontAwesomeIcon icon={faCopy}
                 className="ms-2 cursor-pointer hover:text-white" onClick={handleCopy} />
             </p>
