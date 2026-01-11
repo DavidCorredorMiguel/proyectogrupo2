@@ -8,23 +8,10 @@ import RecommendationRow from "../components/RecommendationRow";
 export default function DetalleProducto() {
   const { id } = useParams();
 
-  // Estado para IDs de productos más vistos (backend)
-  const [topViewedIds, setTopViewedIds] = useState([]);
-
   // Producto actual
   const product = mockProducts.find((p) => p.id === Number(id));
 
-  // Cargar productos más vistos (REAL)
-  useEffect(() => {
-    fetch("http://localhost:3001/products/most-viewed")
-      .then((r) => r.json())
-      .then((data) => {
-        setTopViewedIds(data.map((x) => x.id));
-      })
-      .catch(() => {});
-  }, []);
-
-  // Sumar visita al producto actual (REAL)
+  // sumar visita al producto actual
   useEffect(() => {
     if (!product) return;
 
@@ -49,13 +36,6 @@ export default function DetalleProducto() {
         p.category === product.category &&
         p.id !== product.id
     )
-    .slice(0, 4);
-
-  // Otros usuarios también vieron (REAL)
-  const mostViewedReal = topViewedIds
-    .map((id) => mockProducts.find((p) => p.id === id))
-    .filter(Boolean)
-    .filter((p) => p.id !== product.id)
     .slice(0, 4);
 
   return (
@@ -148,16 +128,8 @@ export default function DetalleProducto() {
       {/* RECOMENDADOS POR CATEGORÍA */}
       {recommendedByCategory.length > 0 && (
         <RecommendationRow
-          title="Recomendados para ti"
+          title={`Más productos de ${product.category}`}
           products={recommendedByCategory}
-        />
-      )}
-
-      {/* OTROS USUARIOS TAMBIÉN VIERON */}
-      {mostViewedReal.length > 0 && (
-        <RecommendationRow
-          title="Otros usuarios también vieron"
-          products={mostViewedReal}
         />
       )}
     </div>

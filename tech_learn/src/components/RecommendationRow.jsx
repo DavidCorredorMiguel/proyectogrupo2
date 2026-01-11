@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useRef } from "react"; 
 import ProductCard from "./ProductCard";
 
-
+//componente y sus props
 const RecommendationRow = ({ title, products }) => {
-  const rowRef = useRef(null);
+  const rowRef = useRef(null); //referencia al contenedor scroll
 
+  //funciones para scrollar a la izquierda y derecha
   const scrollLeft = () => {
     rowRef.current.scrollBy({ left: -320, behavior: "smooth" });
   };
@@ -24,6 +25,7 @@ const RecommendationRow = ({ title, products }) => {
         onClick={scrollLeft}
         className="
           position-absolute
+          z-50
           top-50
           start-0
           translate-middle-y
@@ -41,6 +43,7 @@ const RecommendationRow = ({ title, products }) => {
         onClick={scrollRight}
         className="
           position-absolute
+          z-50
           top-50
           end-0
           translate-middle-y
@@ -62,7 +65,7 @@ const RecommendationRow = ({ title, products }) => {
           <div key={product.id} style={{ minWidth: "260px" }}>
             <ProductCard
               product={product}
-              hideAddToCart={true}
+              //hideAddToCart={true} se puede usar si no queremos mostrar el botón de añadir al carrito
             />
           </div>
         ))}
