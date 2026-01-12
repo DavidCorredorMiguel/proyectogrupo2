@@ -18,7 +18,14 @@ export const mockProducts = [
       almacenamiento: "1 TB SSD",
     },
 
-   
+    reviews: [
+      {
+        user: "Miguel",
+        rating: 4,
+        comment: "Buena cancelación de ruido.",
+        date: "2025-12-09",
+      },
+    ],
   },
   {
     id: 2,
