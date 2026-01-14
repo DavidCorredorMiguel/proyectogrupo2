@@ -19,7 +19,7 @@ const ProductList = ({ products }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
 
-  // 🔁 Cargar productos más vistos
+  // Cargar productos más vistos GET
   useEffect(() => {
     fetch("http://localhost:3001/products/most-viewed")
       .then((r) => r.json())
