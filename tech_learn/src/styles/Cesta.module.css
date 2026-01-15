@@ -11,7 +11,7 @@
 }
 
 .tablacesta thead {
-    background-color: aqua;
+    background-color: brown;
     border: 0.1rem solid black;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .tr1cesta {
-    background-color: lightgreen;
+    background-color: green;
 }
 
 .td1cesta {
@@ -29,5 +29,5 @@
 }
 
 .tr2cesta {
-    background-color: lightgray;
+    background-color: gray;
 }

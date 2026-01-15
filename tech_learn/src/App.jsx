@@ -12,6 +12,7 @@ import TarjetasAprender from "./pages/TarjetasAprender";
 import CreaEditaTarjeta from "./pages/CreaEditaTarjeta";
 import AboutUs from "./pages/AboutUs";
 import Productos from "./pages/Productos";
+import "./App.css";
 
 const App = () => {
   return (
