@@ -38,6 +38,7 @@ export default function Chatbot() {
 
     // Envía el mensaje al bot y espera la respuesta, pedimos la respuesta asincrónicamente
     const answer = await sendMessageToBot(input);
+    
     // se añade la respuesta del bot a los mensajes
     setMessages([...newMessages, { from: "bot", text: answer }]);
   }
