@@ -13,6 +13,7 @@ import CreaEditaTarjeta from "./pages/CreaEditaTarjeta";
 import AboutUs from "./pages/AboutUs";
 import Chatbot from "./components/Chatbot";
 import Productos from "./pages/Productos";
+import "./App.css";
 
 const App = () => {
   return (

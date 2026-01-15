@@ -41,18 +41,10 @@ export default function DetalleProducto() {
   return (
     <div className={styles.detallePage}>
       {/* IMAGEN PRINCIPAL */}
-      <img
-        src={product.image}
-        alt={product.name}
-        className={styles.imgPrincipal}
-      />
-
+      <img src={product.image} alt={product.name} className={styles.imgPrincipal} />
       {/* MINI GALERÍA */}
       <div className={styles.gallery}>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span><span></span>
       </div>
 
       {/* NOMBRE + COMPRA */}
@@ -63,7 +55,8 @@ export default function DetalleProducto() {
 
           <div className={styles.cantidad}>
             <span>Cantidad</span>
-            <input type="number" min="1" defaultValue="1" />
+            <input type="number" min="1" defaultValue="1"
+              style={{ width: "60px", backgroundColor: "orange" }} />
           </div>
 
           <button className={styles.btnComprar}>
