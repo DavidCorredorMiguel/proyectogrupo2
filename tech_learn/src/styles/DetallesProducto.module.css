@@ -109,8 +109,17 @@
 }
 
 .tabla th {
-  background: #f3f3f3;
   font-weight: bold;
+}
+
+.extraImages {
+  display: flex;
+  justify-content: center;
+}
+.extraImages img {
+  display: flex;
+  justify-content: center;
+  width: 50%;
 }
 
 /* RESEÑAS */

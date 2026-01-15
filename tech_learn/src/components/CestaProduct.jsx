@@ -57,7 +57,7 @@ const CestaProduct = () => {
                 <td>
                   <input type="number" min="1" value={item.quantity}
                     onChange={(e) => handleQuantityChange(item.id, e.target.value)} 
-                      style={{ width: "60px", backgroundColor: "lightblue" }}
+                      style={{ width: "60px", backgroundColor: "orange" }}
                   />
                 </td>
                 <td>{(item.price * item.quantity).toFixed(2)}€</td>

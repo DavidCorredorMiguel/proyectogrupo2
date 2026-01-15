@@ -6,7 +6,6 @@ export default function DetalleProducto() {
   const { id } = useParams();
 
   const product = mockProducts.find((p) => p.id === Number(id));
-
   if (!product) {
     return <h2 className="producto-no-encontrado">Producto no encontrado</h2>;
   }
@@ -14,13 +13,10 @@ export default function DetalleProducto() {
   return (
     <div className={styles.detallePage}>
       {/* IMAGEN PRINCIPAL */}
-      <img src={product.image} alt={product.name} className={styles.imgPrincipal}/>
+      <img src={product.image} alt={product.name} className={styles.imgPrincipal} />
       {/* MINI GALERÍA */}
       <div className={styles.gallery}>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span><span></span>
       </div>
       {/* NOMBRE + COMPRA */}
       <div className={styles.topCompra}>
@@ -29,7 +25,8 @@ export default function DetalleProducto() {
           <p className={styles.precio}>{product.price} €</p>
           <div className={styles.cantidad}>
             <span>Cantidad</span>
-            <input type="number" min="1" defaultValue="1" />
+            <input type="number" min="1" defaultValue="1"
+              style={{ width: "60px", backgroundColor: "orange" }} />
           </div>
           <button className={styles.btnComprar}>COMPRAR</button>
         </div>
