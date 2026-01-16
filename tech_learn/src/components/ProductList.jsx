@@ -64,31 +64,19 @@ const ProductList = ({ products }) => {
             onAddToCart={handleAddToCart}
           />
         ))}
-      </div>
-
+      </div><br />
       {/* PAGINACIÓN */}
       <div className="flex justify-center items-center gap-4">
-        <button
-          onClick={() => setCurrentPage(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
-        >
-          ⬅ Anterior
-        </button>
-
-        <span>
-          Página {currentPage}
-        </span>
-
+        <button onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1} className="px-4 py-2 bg-orange-500 rounded">
+            ⬅ Anterior</button>
+        <span>Página {currentPage}</span>
         <button
           onClick={() => setCurrentPage(currentPage + 1)}
           disabled={indexOfLastProduct >= displayProducts.length}
-          className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
-        >
-          Siguiente ➡
-        </button>
+          className="px-4 py-2 bg-orange-500 rounded">
+          Siguiente ➡</button>
       </div>
-
       {/* MÁS VISTOS */}
       {mostViewedProducts.length > 0 && (
         <RecommendationRow
