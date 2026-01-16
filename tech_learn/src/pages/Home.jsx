@@ -1,7 +1,11 @@
-import React from "react";
+import { mockProducts } from "../mocks/products";
 import ProductList from "../components/ProductList";
 
 const Home = () => {
+  const destacados = [...mockProducts]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 6);
+
   return (
     <>
       {/* Banner/Hero */}
@@ -12,7 +16,7 @@ const Home = () => {
       {/* Lista de productos */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Productos destacados</h2>
-        <ProductList />
+        <ProductList products={destacados} />
       </section>
     </>
   );

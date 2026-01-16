@@ -1,15 +1,17 @@
-/* CONTENEDOR PRINCIPAL */
+/* ===========================
+   CONTENEDOR PRINCIPAL
+=========================== */
 .detallePage {
   width: 80%;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 2rem auto;
-  text-align: center;
   font-family: Arial, sans-serif;
 }
 
 /* IMAGEN PRINCIPAL */
 .imgPrincipal {
-  width: 260px;
+  width: 100%;
+  max-width: 420px;
   margin: 0 auto;
   display: block;
 }
@@ -19,7 +21,7 @@
   display: flex;
   justify-content: center;
   gap: 0.4rem;
-  margin-top: 0.4rem;
+  margin-top: 0.6rem;
 }
 
 .gallery span {
@@ -31,7 +33,10 @@
 
 /* NOMBRE + BLOQUE DE COMPRA */
 .topCompra {
-  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
 }
 
 .nombre {
@@ -49,66 +54,96 @@
 }
 
 .precio {
-  font-size: 1.2rem;
+  font-size: 2rem;
   font-weight: bold;
-  color: #d60000;
+  color: #b12704;
 }
 
+.rowCompra {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ===========================
+   CANTIDAD
+=========================== */
 .cantidad {
   display: flex;
   flex-direction: column;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .cantidad input {
-  width: 60px;
-  padding: 0.3rem;
+  width: 70px;
+  padding: 0.4rem;
   margin-top: 0.3rem;
   text-align: center;
-  border: 1px solid #aaa;
 }
 
+/* ===========================
+   BOTÓN
+=========================== */
 .btnComprar {
   background: #007bff;
   color: white;
-  padding: 0.5rem 1.3rem;
+  padding: 0.6rem 1.5rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
 }
 
 .btnComprar:hover {
-  background: #0068d4;
+  background: #0056b3;
 }
 
 /* SUBTÍTULOS (subrayados) */
 .subtitulo {
-  margin-top: 2rem;
-  font-weight: bold;
-  text-decoration: underline;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 2rem 0 0.6rem;
 }
 
 /* TEXTO NORMAL */
 .texto {
-  margin-top: 0.3rem;
   font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
 }
 
 /* TABLA DE CARACTERÍSTICAS */
 .tabla {
-  margin: 1rem auto;
+  margin: 1rem 0;
   border-collapse: collapse;
-  font-size: 0.9rem;
 }
 
 .tabla th,
 .tabla td {
   border: 1px solid #aaa;
   padding: 0.5rem 1rem;
+  font-size: 0.9rem;
 }
 
 .tabla th {
+  background: #f7f7f7;
+  text-align: left;
+}
+
+/* ===========================
+   OPINIONES
+=========================== */
+.ratingSummary {
+  max-width: 420px;
+  margin-top: 3rem;
+}
+
+.ratingTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.ratingAverage {
   font-weight: bold;
 }
 
@@ -125,8 +160,104 @@
 /* RESEÑAS */
 .reviews {
   display: flex;
-  justify-content: center;
-  gap: 4rem;
-  margin-top: 1rem;
-  font-weight: bold;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stars {
+  color: #1a73e8;
+}
+
+.averageNumber {
+  font-weight: 600;
+}
+
+.totalReviews {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.5rem 0 1rem;
+}
+
+/* ===========================
+   BARRAS RATING
+=========================== */
+.ratingBars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ratingRow {
+  display: grid;
+  grid-template-columns: 80px 1fr 40px;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.ratingRowActive {
+  background: #f0faff;
+}
+
+.bar {
+  height: 10px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: #1a73e8;
+}
+
+.percent {
+  text-align: right;
+  color: #007185;
+}
+
+/* ===========================
+   RESEÑAS
+=========================== */
+.reviewsList {
+  margin-top: 2rem;
+}
+
+.review {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewUser {
+  font-weight: 600;
+}
+
+.reviewRating {
+  color: #1a73e8;
+}
+
+.reviewComment {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 768px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .topCompra {
+    align-items: center;
+  }
 }
