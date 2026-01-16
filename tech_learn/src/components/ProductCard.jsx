@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+
 const ProductCard = ({ product, onAddToCart  }) => {
   return (
     <div className="card h-100 hover:shadow-lg transition-all">
       <Link to={`/producto/${product.id}`}>
         <img src={product.image} alt={product.name}
-          className="card-img-top object-cover" style={{ height: "200px" }} />
+          className="card-img-top object-contain" style={{ height: "200px" }} />
       </Link>
       <div className="card-body d-flex flex-column">
         <Link to={`/producto/${product.id}`} className="text-decoration-none text-dark">
