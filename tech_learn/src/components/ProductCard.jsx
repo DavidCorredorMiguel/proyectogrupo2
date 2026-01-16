@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-
 const ProductCard = ({ product, onAddToCart  }) => {
   return (
     <div className="card h-100 hover:shadow-lg transition-all">
@@ -27,5 +26,4 @@ const ProductCard = ({ product, onAddToCart  }) => {
     </div>
   );
 };
-
 export default ProductCard;
