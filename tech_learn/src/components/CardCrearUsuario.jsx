@@ -30,7 +30,7 @@ const CardCrearUsuario = () => {
     const newUser = registerUser(name,email,password)
 
 
-    if (newUser) {
+    if (!newUser) {
       alert("El email ya está registrado");
       return;
     }
