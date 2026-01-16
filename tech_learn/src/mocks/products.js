@@ -187,4 +187,53 @@ export const mockProducts = [
       },
     ],
   },
+  // --- NUEVOS PRODUCTOS ---
+{
+    id: 7,
+    name: "Silla Ergonómica",
+    price: 199.50,
+    image: "/images/silla.png",   
+    description: "Soporte lumbar ajustable y malla transpirable.",
+  },
+  {
+    id: 8,
+    name: "Micrófono de Condensador",
+    price: 110.00,
+    image: "/images/microfono.png",  
+    category: "Accesorios",
+    description: "Ideal para streaming y podcasts con conexión USB.",
+  },
+  {
+    id: 9,
+    name: "Disco Duro Externo 2TB",
+    price: 85.99,
+    image: "/images/discoduro.png",  
+    category: "Almacenamiento",
+    description: "USB 3.0 de alta velocidad, diseño compacto.",
+  },
+  {
+    id: 10,
+    name: "Altavoces Inteligentes",
+    price: 45.00,
+    image: "/images/altavoces.png",     
+    category: "Electrónica",
+    description: "Compatible con asistentes de voz y sonido envolvente.",
+  },
+  {
+    id: 11,
+    name: "Alfombrilla XL RGB",
+    price: 24.95,
+    image: "/images/alfombrilla.png",  
+    category: "Accesorios",
+    description: "Superficie de tela micro-texturizada y bordes LED.",
+  },
+  {
+    id: 12,
+    name: "Monitor 27",
+    price: 265.00,
+    image: "/images/monitor2.png",
+    category: "Electrónica",
+    description: "144Hz IPS 1ms",
+  }
 ];
+

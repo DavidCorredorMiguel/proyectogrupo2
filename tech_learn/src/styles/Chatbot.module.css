@@ -1,0 +1,86 @@
+.chatbot {
+    position: fixed;
+    bottom: 7rem;
+    right: 1.5rem;
+
+    width: 24rem;
+    height: 520px;
+    max-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: #f8fafc;
+    border-radius: 1rem;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    z-index: 40;
+}
+
+.header {
+    flex-shrink: 0;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(to right, #020617, #008b8b);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.messages {
+    flex: 1;
+    padding: 1.25rem;
+    overflow-y: auto;
+}
+
+.inputBar {
+    flex-shrink: 0;
+    padding: 0.75rem;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* FILA DE MENSAJE */
+.messageRow {
+    display: flex;
+    margin-bottom: 0.75rem;
+}
+
+/* ALINEACIÓN */
+.user {
+    justify-content: flex-end;
+}
+
+.bot {
+    justify-content: flex-start;
+}
+
+/* BURBUJA BASE */
+.bubble {
+    max-width: 75%;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 1rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+/* BURBUJA USUARIO */
+.userBubble {
+    background-color: #008b8b;
+    color: white;
+    border-bottom-right-radius: 0.25rem;
+}
+
+/* BURBUJA BOT */
+.botBubble {
+    background-color: #ffffff;
+    color: #1f2937;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    border-bottom-left-radius: 0.25rem;
+}
