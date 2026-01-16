@@ -1,41 +1,42 @@
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { mockProducts } from "../mocks/products";
 import { useState } from "react";
 import styles from "../styles/DetallesProducto.module.css";
+import RecommendationRow from "../components/RecommendationRow";
 
 export default function DetalleProducto() {
   const { id } = useParams();
   const [selectedRating, setSelectedRating] = useState(null);
 
+  // Producto actual
   const product = mockProducts.find((p) => p.id === Number(id));
+
+  // sumar visita al producto actual
+  useEffect(() => {
+    if (!product) return;
+
+    fetch(`http://localhost:3001/products/${product.id}/view`, {
+      method: "POST",
+    }).catch(() => {});
+  }, [product]);
+
+  // Producto no encontrado
   if (!product) {
-    return <h2 className="producto-no-encontrado">Producto no encontrado</h2>;
+    return (
+      <h2 className="producto-no-encontrado">
+        Producto no encontrado
+      </h2>
+    );
   }
+  // Recomendados por categoría
+  const recommendedByCategory = mockProducts
+    .filter(
+      (p) =>
+        p.category === product.category &&
+        p.id !== product.id
+    ).slice(0, 4);
 
-  /* ===== LÓGICA RESEÑAS ===== */
-  const totalReviews = product.reviews.length;
-
-  const averageRating =
-    totalReviews === 0
-      ? 0
-      : (
-          product.reviews.reduce((acc, r) => acc + r.rating, 0) / totalReviews
-        ).toFixed(1);
-
-  const ratingCounts = [5, 4, 3, 2, 1].map((star) => {
-    const count = product.reviews.filter((r) => r.rating === star).length;
-    const percentage =
-      totalReviews === 0 ? 0 : Math.round((count / totalReviews) * 100);
-
-    return { star, count, percentage };
-  });
-
-  const filteredReviews =
-    selectedRating === null
-      ? product.reviews
-      : product.reviews.filter((r) => r.rating === selectedRating);
-
-  /* ===== JSX ===== */
   return (
     <div className={styles.detallePage}>
       {/* VOLVER */}
@@ -51,34 +52,38 @@ export default function DetalleProducto() {
       <div className={styles.gallery}>
         <span></span><span></span><span></span><span></span>
       </div>
-
       {/* NOMBRE + COMPRA */}
       <div className={styles.topCompra}>
         <h2 className={styles.nombre}>{product.name}</h2>
         <div className={styles.rowCompra}>
-          <p className={styles.precio}>
-            Precio: <span>{product.price} €</span>
-          </p>
-
+          <p className={styles.precio}>{product.price} €</p>
           <div className={styles.cantidad}>
             <span>Cantidad</span>
             <input type="number" min="1" defaultValue="1"
               style={{ width: "60px", backgroundColor: "orange" }} />
           </div>
-
-          <button className={styles.btnComprar}>Añadir</button>
+          <button className={styles.btnComprar}>
+            COMPRAR
+          </button>
         </div>
       </div>
-
       {/* DESCRIPCIONES */}
-      <h3 className={styles.subtitulo}>Descripción Breve del producto</h3>
-      <p className={styles.texto}>{product.description}</p>
+      <h3 className={styles.subtitulo}>
+        Descripción Breve del producto
+      </h3>
+      <p className={styles.texto}>PC Gaming Windows 11</p>
+      <h3 className={styles.subtitulo}>
+        Descripción Completa del producto
+      </h3>
+      <p className={styles.texto}>
+        PC Gaming con Windows 11 <br />
+        AMD Radeon
+      </p>
+      {/* TABLA CARACTERÍSTICAS */}
+      <h3 className={styles.subtitulo}>
+        Características Producto
+      </h3>
 
-      <h3 className={styles.subtitulo}>Descripción Completa del producto</h3>
-      <p className={styles.texto}>{product.descriptionC}</p>
-
-      {/* CARACTERÍSTICAS */}
-      <h3 className={styles.subtitulo}>Características Producto</h3>
       <table className={styles.tabla}>
         <tbody>
           {Object.entries(product.features).map(([key, value]) => (
@@ -93,69 +98,24 @@ export default function DetalleProducto() {
           ))}
         </tbody>
       </table>
-
-      {/* ===== OPINIONES ===== */}
-      <div className={styles.ratingSummary}>
-        <h3 className={styles.ratingTitle}>Opiniones de clientes</h3>
-
-        <div className={styles.ratingAverage}>
-          <span className={styles.stars}>★★★★★</span>
-          <span className={styles.averageNumber}>{averageRating} de 5</span>
-        </div>
-
-        <p className={styles.totalReviews}>
-          {totalReviews} calificaciones globales
-        </p>
-
-        <div className={styles.ratingBars}>
-          {ratingCounts.map((item) => (
-            <div
-              key={item.star}
-              className={`${styles.ratingRow} ${
-                selectedRating === item.star ? styles.ratingRowActive : ""
-              }`}
-              onClick={() =>
-                setSelectedRating(
-                  selectedRating === item.star ? null : item.star
-                )
-              }
-            >
-              <span>{item.star} estrellas</span>
-
-              <div className={styles.bar}>
-                <div
-                  className={styles.barFill}
-                  style={{ width: `${item.percentage}%` }}
-                />
-              </div>
-
-              <span className={styles.percent}>{item.percentage}%</span>
-            </div>
-          ))}
-        </div>
+      {/* IMÁGENES PRODUCTO */}
+      <h3 className={styles.subtitulo}>Imágenes Producto</h3>
+      <div className={styles.extraImages}>
+        <img src={product.image} alt={product.name} />
       </div>
-
-      {/* LISTADO RESEÑAS */}
-      {selectedRating !== null &&
-        (filteredReviews.length === 0 ? (
-          <p className={styles.noReviews}>
-            Pulsa una valoración para ver las reseñas No hay reseñas con{" "}
-            {selectedRating} estrellas
-          </p>
-        ) : (
-          <div className={styles.reviewsList}>
-            {filteredReviews.map((review, index) => (
-              <div key={index} className={styles.review}>
-                <div className={styles.reviewHeader}>
-                  <strong className={styles.reviewUser}>{review.user}</strong>
-                  <span className={styles.reviewRating}>{review.rating} ★</span>
-                </div>
-
-                <p className={styles.reviewComment}>{review.comment}</p>
-              </div>
-            ))}
-          </div>
-        ))}
+      {/* RESEÑAS */}
+      <h3 className={styles.subtitulo}>Reseñas</h3>
+      <div className={styles.reviews}>
+        <span>Comentarios</span>
+        <span>Valoraciones</span>
+      </div>
+      {/* RECOMENDADOS POR CATEGORÍA */}
+      {recommendedByCategory.length > 0 && (
+        <RecommendationRow
+          title={`Más productos de ${product.category}`}
+          products={recommendedByCategory}
+        />
+      )}
     </div>
   );
 }
