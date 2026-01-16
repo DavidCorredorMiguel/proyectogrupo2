@@ -4,7 +4,6 @@ import { useTema } from "../mocks/useTema";
 
 function BotonTema() {
   const { alternarTema, esOscuro } = useTema();
-
   return (
     <button className="boton-tema" onClick={alternarTema}>
       {esOscuro ? (
@@ -21,5 +20,4 @@ function BotonTema() {
     </button>
   );
 }
-
 export default BotonTema;

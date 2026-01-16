@@ -6,10 +6,8 @@ export const mockProducts = [
     image: "/images/portatil.jpg",
     category: "Electrónica",
     description: "Portátil de alto rendimiento para juegos y tareas exigentes.",
-
     descriptionC:
-      " Portátil gaming equipado con GPU dedicada RTX 4060, procesador de última generación, pantalla de alta tasa de refresco y sistema de refrigeración avanzado. Diseñado para gaming competitivo, edición de vídeo y desarrollo.",
-
+      "Portátil gaming equipado con GPU dedicada RTX 4060, procesador de última generación, pantalla de alta tasa de refresco y sistema de refrigeración avanzado. Diseñado para gaming competitivo, edición de vídeo y desarrollo.",
     features: {
       sistemaOperativo: "Windows 11",
       procesador: "Intel Core i7",
@@ -17,7 +15,6 @@ export const mockProducts = [
       ram: "16 GB",
       almacenamiento: "1 TB SSD",
     },
-
     reviews: [
       {
         user: "Miguel",
@@ -36,7 +33,6 @@ export const mockProducts = [
     description: "Auriculares inalámbricos con cancelación de ruido.",
     descriptionC:
       "Auriculares Bluetooth con cancelación activa de ruido, batería de larga duración, micrófonos integrados para llamadas y sonido equilibrado para música y gaming casual.",
-
     features: {
       conectividad: "Bluetooth 5.2",
       cancelacionRuido: "Activa",
@@ -44,7 +40,6 @@ export const mockProducts = [
       microfono: "Integrado",
       peso: "250 g",
     },
-
     reviews: [
       {
         user: "Miguel",
@@ -54,7 +49,6 @@ export const mockProducts = [
       },
     ],
   },
-
   {
     id: 3,
     name: "Teclado Mecánico",
@@ -64,7 +58,6 @@ export const mockProducts = [
     description: "Teclado mecánico preciso y duradero.",
     descriptionC:
       "Teclado mecánico con switches Cherry MX Red, respuesta rápida, retroiluminación LED y construcción robusta. Ideal para escritura intensiva y juegos competitivos.",
-
     features: {
       tipo: "Mecánico",
       switches: "Cherry MX Red",
@@ -72,7 +65,6 @@ export const mockProducts = [
       conexion: "USB",
       layout: "QWERTY ES",
     },
-
     reviews: [
       {
         user: "Ana",
@@ -99,7 +91,6 @@ export const mockProducts = [
       refresco: "144 Hz",
       tiempoRespuesta: "1 ms",
     },
-
     reviews: [
       {
         user: "Pablo",
@@ -124,7 +115,6 @@ export const mockProducts = [
     description: "Ratón preciso con iluminación RGB.",
     descriptionC:
       "Ratón gaming ergonómico con sensor de hasta 16000 DPI, iluminación RGB configurable, botones programables y alta precisión para juegos FPS y MOBA.",
-
     features: {
       dpi: "16000",
       botones: "8 programables",
@@ -132,7 +122,6 @@ export const mockProducts = [
       conexion: "USB",
       peso: "95 g",
     },
-
     reviews: [
       {
         user: "David",
@@ -151,7 +140,6 @@ export const mockProducts = [
     description: "Webcam de alta resolución para streaming.",
     descriptionC:
       "Cámara web 4K con autoenfoque rápido, micrófono integrado con reducción de ruido y calidad profesional para videollamadas, clases online y streaming.",
-
     features: {
       resolucion: "4K",
       fps: "60 fps",
@@ -159,7 +147,6 @@ export const mockProducts = [
       microfono: "Integrado",
       conexion: "USB-C",
     },
-
     reviews: [
       {
         user: "Sergio",
@@ -187,19 +174,18 @@ export const mockProducts = [
       },
     ],
   },
-  // --- NUEVOS PRODUCTOS ---
-{
+  {
     id: 7,
     name: "Silla Ergonómica",
-    price: 199.50,
-    image: "/images/silla.png",   
+    price: 199.5,
+    image: "/images/silla.png",
     description: "Soporte lumbar ajustable y malla transpirable.",
   },
   {
     id: 8,
     name: "Micrófono de Condensador",
-    price: 110.00,
-    image: "/images/microfono.png",  
+    price: 110.0,
+    image: "/images/microfono.png",
     category: "Accesorios",
     description: "Ideal para streaming y podcasts con conexión USB.",
   },
@@ -207,15 +193,15 @@ export const mockProducts = [
     id: 9,
     name: "Disco Duro Externo 2TB",
     price: 85.99,
-    image: "/images/discoduro.png",  
+    image: "/images/discoduro.png",
     category: "Almacenamiento",
     description: "USB 3.0 de alta velocidad, diseño compacto.",
   },
   {
     id: 10,
     name: "Altavoces Inteligentes",
-    price: 45.00,
-    image: "/images/altavoces.png",     
+    price: 45.0,
+    image: "/images/altavoces.png",
     category: "Electrónica",
     description: "Compatible con asistentes de voz y sonido envolvente.",
   },
@@ -223,17 +209,16 @@ export const mockProducts = [
     id: 11,
     name: "Alfombrilla XL RGB",
     price: 24.95,
-    image: "/images/alfombrilla.png",  
+    image: "/images/alfombrilla.png",
     category: "Accesorios",
     description: "Superficie de tela micro-texturizada y bordes LED.",
   },
   {
     id: 12,
     name: "Monitor 27",
-    price: 265.00,
+    price: 265.0,
     image: "/images/monitor2.png",
     category: "Electrónica",
     description: "144Hz IPS 1ms",
-  }
+  },
 ];
-

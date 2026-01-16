@@ -6,7 +6,6 @@ import { mockProducts } from '../mocks/products';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import BotonTema from './BotonTema';
-
 // Extraer categorías únicas del mock
 const categories = [...new Set(mockProducts.map(p => p.category))];
 
@@ -28,7 +27,6 @@ const Header = () => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') handleSearch();
   };
-
   return (
     <header className="grid grid-cols-4 gap-4 items-center p-3 
       bg-gradient-to-r from-slate-950 to-[#008B8B] text-white sticky top-0 z-50">
