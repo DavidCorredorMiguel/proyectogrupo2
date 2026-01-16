@@ -144,6 +144,21 @@
 }
 
 .ratingAverage {
+  font-weight: bold;
+}
+
+.extraImages {
+  display: flex;
+  justify-content: center;
+}
+.extraImages img {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+/* RESEÑAS */
+.reviews {
   display: flex;
   align-items: center;
   gap: 0.5rem;
