@@ -3,6 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import { mockProducts } from '../mocks/products';
 import ProductList from '../components/ProductList';
 
+
+
 const normalize = (str) => {
   return str
     .toLowerCase().normalize('NFD')
@@ -41,7 +43,7 @@ const Productos = () => {
         <div className="flex gap-2">
           <button
             onClick={() => setViewMode('grid')}
-            className={`px-4 py-2 rounded-lg transition-colors font-semibold ${
+            className={`btn btn-primary  px-4 py-2 rounded-lg transition-colors font-semibold ${
               viewMode === 'grid'
                 ? 'bg-blue-500 text-white'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -52,7 +54,7 @@ const Productos = () => {
           </button>
           <button
             onClick={() => setViewMode('list')}
-            className={`px-4 py-2 rounded-lg transition-colors font-semibold ${
+            className={`btn btn-primary  px-4 py-2 rounded-lg transition-colors font-semibold ${
               viewMode === 'list'
                 ? 'bg-blue-500 text-white'
                 : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -65,7 +67,7 @@ const Productos = () => {
       </div>
       
       {filteredProducts.length > 0 ? (
-        <ProductList products={filteredProducts} viewMode={viewMode} />
+        <ProductList products={filteredProducts} viewMode={viewMode} showPagination={true} />
       ) : (
         <p className="text-center text-gray-500 py-8">
           No se encontraron productos que coincidan con tu búsqueda.
