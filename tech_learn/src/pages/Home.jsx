@@ -16,7 +16,7 @@ const Home = () => {
       {/* Lista de productos */}
       <section>
         <h2 className="text-2xl font-semibold mb-4">Productos destacados</h2>
-        <ProductList products={destacados} />
+        <ProductList products={destacados} showPagination={false} />
       </section>
     </>
   );

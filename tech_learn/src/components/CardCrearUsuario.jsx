@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import style from "../styles/Login.module.css";
 import { registerUser } from "../mocks/users";
-
 import { useAuthStore } from "../store/authStore";
 import { useNavigate } from "react-router-dom";
 
 const CardCrearUsuario = () => {
-
   const login = useAuthStore((state) => state.login);
   const navigate = useNavigate();
-
-
   // Estado para mostrar/ocultar contraseña
   const [showPassword, setShowPassword] = useState(false);
   // Estado para almacenar la contraseña escrita
@@ -21,20 +17,16 @@ const CardCrearUsuario = () => {
     setShowPassword((prev) => !prev);
   };
   const handleSubmit = (e) => {
-
     e.preventDefault();
     const formData = new FormData(e.target);
     const name = formData.get("name");
     const email = formData.get("email");
     const password = formData.get("password");
     const newUser = registerUser(name,email,password)
-
-
-    if (!newUser) {
+    if (newUser) {
       alert("El email ya está registrado");
       return;
     }
-
     // Solo persiste en memoria esta sesión
     login(newUser);
     navigate("/");

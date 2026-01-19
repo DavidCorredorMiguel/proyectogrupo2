@@ -1,0 +1,149 @@
+/* RESEÑAS */
+.reviewsContainer {
+  max-width: 520px;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.reviews {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stars {
+  color: #1a73e8;
+}
+
+.averageNumber {
+  font-weight: 600;
+}
+
+.totalReviews {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0.5rem 0 1rem;
+}
+
+/* ===========================
+   BARRAS RATING
+=========================== */
+.ratingBars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.ratingRow {
+  display: grid;
+  grid-template-columns: 80px 1fr 40px;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.ratingRowActive {
+  background: #f0faff;
+}
+
+.bar {
+  height: 10px;
+  background: #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: #1a73e8;
+}
+
+.percent {
+  text-align: right;
+  color: #007185;
+}
+
+/* ===========================
+   RESEÑAS
+=========================== */
+.reviewsList {
+  margin-top: 2rem;
+}
+
+.review {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewUser {
+  font-weight: 600;
+}
+
+.reviewRating {
+  color: #1a73e8;
+}
+
+.reviewComment {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.addReview {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+
+.starSelector {
+  display: flex;
+  gap: 0.3rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.star {
+  color: #777;
+}
+
+.starActive {
+  color: #1a73e8;
+}
+
+.addReview textarea {
+  width: 100%;
+  min-height: 80px;
+  margin: 0.8rem 0;
+  padding: 0.6rem;
+  background: #111;
+  color: white;
+  border: 1px solid #333;
+  border-radius: 6px;
+}
+
+.addReview button {
+  background: #1a73e8;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.addReview button:hover {
+  background: #1669c1;
+}
+
+.viewMoreBtn {
+  margin-top: 2rem;
+}
+
+.infoToggle {
+  display: block;
+  margin-top: 1rem;
+}

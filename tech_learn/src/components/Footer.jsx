@@ -9,7 +9,6 @@ const Footer = () => {
     navigator.clipboard.writeText("Tech-learn");
     alert("Copiado!");
   };
-
   return (
     <footer className="bg-dark text-white py-4 mt-auto">
       <div className="container">
@@ -26,8 +25,7 @@ const Footer = () => {
             <h6 className="font-semibold mb-2">Páginas</h6>
             <ul className="list-unstyled text-sm">
               <li>
-                <a href="/" 
-                  className="text-gray-400 hover:text-white no-underline">
+                <a href="/" className="text-gray-400 hover:text-white no-underline">
                   Inicio</a>
               </li>
               <li>

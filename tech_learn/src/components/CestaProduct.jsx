@@ -6,16 +6,13 @@ import style from "../styles/Cesta.module.css";
 const CestaProduct = () => {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate(); // hook para navegar
-
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCart(getCart());}, []);
-
   const handleQuantityChange = (id, value) => {
     const updated = updateQuantity(id, Number(value));
     setCart(updated);
   };
-
   const handleRemove = (id) => {
     const updated = removeProduct(id);
     setCart(updated);
@@ -23,11 +20,9 @@ const CestaProduct = () => {
   // Calcular total general
   const totalGeneral = cart
     .reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
-  
   const handleContinuar = () => {
     navigate("/tarjetaspago"); // navegar a TarjetasPago
   };
-
   return (
     <div className="container mt-4">
       <h1 className={style.titulopag}>Cesta</h1>

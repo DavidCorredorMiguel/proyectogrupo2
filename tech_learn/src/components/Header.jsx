@@ -6,9 +6,14 @@ import { mockProducts } from '../mocks/products';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import BotonTema from './BotonTema';
-
 // Extraer categorías únicas del mock
-const categories = [...new Set(mockProducts.map(p => p.category))];
+const categories = [
+...new Set(
+mockProducts
+.map(p => p.category)
+.filter(cat => cat && cat.trim() !== '')
+)
+];
 
 const Header = () => {
   const { isLoggedIn, user, logout } = useAuthStore();
@@ -28,7 +33,6 @@ const Header = () => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') handleSearch();
   };
-
   return (
     <header className="grid grid-cols-4 gap-4 items-center p-3 
       bg-gradient-to-r from-slate-950 to-[#008B8B] text-white sticky top-0 z-50">
@@ -43,7 +47,7 @@ const Header = () => {
           <select className="form-select" style={{ maxWidth: '180px' }}
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)} >
-            <option value="todas">Todas las categorías</option>
+            <option value="todas">Categorías</option>
             {categories.map(cat => (
               <option key={cat} value={cat}>{cat}</option>
             ))}
