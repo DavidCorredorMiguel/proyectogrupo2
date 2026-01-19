@@ -29,12 +29,12 @@ const ProductList = ({
       })
       .catch(() => {});
   }, []);
-const getAvgRating = (product) =>
-  product.reviews?.length
-    ? product.reviews.reduce((s, r) => s + r.rating, 0) / product.reviews.length
-    : 0;
 
-
+  const getAvgRating = (product) =>
+    product.reviews?.length
+      ? product.reviews.reduce((s, r) => s + r.rating, 0) /
+        product.reviews.length
+      : 0;
 
   const mostViewedProducts = topViewedIds
     .map((id) => mockProducts.find((p) => p.id === id))
@@ -251,47 +251,54 @@ const getAvgRating = (product) =>
           </div>
         ) : viewMode === "list" ? (
           <div className="grid grid-cols-1 gap-4">
-            {productsToRender.map((product) => (
-              <div
-                key={product.id}
-                className="flex gap-4 bg-white rounded-lg shadow-md 
-                  overflow-hidden hover:shadow-lg transition-shadow"
-              >
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-32 h-32 object-cover flex-shrink-0"
-                />
-                <div className="flex-1 p-4 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-black">{product.name}</h3>
-                    <p className="text-sm text-blue-600 mb-2">
-                      {product.category}
-                    </p>
-                  </div>
-                  <div className="flex items-center text-sm text-yellow-500 mb-2">
-                    {"★".repeat(Math.round(avgRating))}
-                    {"☆".repeat(5 - Math.round(avgRating))}
-                    <span className="ml-2 w-8 text-right text-gray-500">
-                      {avgRating.toFixed(1)}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <p className="text-xl font-bold text-blue-600">
-                      {product.price}€
-                    </p>
-                    <button
-                      onClick={() => handleAddToCart(product)}
-                      className="btn btn-primary px-4 py-2 bg-blue-500 text-white rounded-lg 
-                        hover:bg-blue-600 transition-colors shadow-sm"
-                    >
-                      <FontAwesomeIcon icon={faCartPlus} className="me-2" />
-                      Añadir
-                    </button>
+            {productsToRender.map((product) => {
+              const avgRating = getAvgRating(product);
+
+              return (
+                <div
+                  key={product.id}
+                  className="flex gap-4 bg-white rounded-lg shadow-md 
+        overflow-hidden hover:shadow-lg transition-shadow"
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-32 h-32 object-cover flex-shrink-0"
+                  />
+
+                  <div className="flex-1 p-4 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-black">{product.name}</h3>
+                      <p className="text-sm text-black mb-2">
+                        {product.category}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center text-sm text-yellow-500 mb-2">
+                      {"★".repeat(Math.round(avgRating))}
+                      {"☆".repeat(5 - Math.round(avgRating))}
+                      <span className="ml-2 w-8 text-right text-gray-500">
+                        {avgRating.toFixed(1)}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between">
+                      <p className="text-xl font-bold text-blue-600">
+                        {product.price}€
+                      </p>
+                      <button
+                        onClick={() => handleAddToCart(product)}
+                        className="btn btn-primary px-4 py-2 bg-blue-500 text-white rounded-lg 
+              hover:bg-blue-600 transition-colors shadow-sm"
+                      >
+                        <FontAwesomeIcon icon={faCartPlus} className="me-2" />
+                        Añadir
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
