@@ -1,161 +1,212 @@
 .card {
-  width: 100%;
-  max-width: 420px;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: min(90%, 420px);
+  background: linear-gradient(180deg, #f5fafa 0%, #e5f0f0 100%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-self: center;
-  color: white;
+  align-items: center;
+  color: #1a1a2e;
   text-align: center;
-  font-weight: 500;
-  padding: 2.5rem;
-  border: none;
+  padding: 3rem 2.5rem;
+  border-radius: 20px;
+  border: 1px solid #c8d8d8;
+  box-shadow:
+    0 25px 50px rgba(0, 80, 80, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.05);
+  margin: 3rem auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #008080, #20b2aa, #40e0d0);
 }
 
 .cardheader {
   font-size: 2rem;
   font-weight: 700;
-  color: white;
-  margin-bottom: 0.5rem;
+  color: #008080;
   text-decoration: none;
-  background: none;
+  margin-bottom: 0.25rem;
+  background: transparent;
   border: none;
-  padding: 0;
 }
 
-.card input {
-  padding: 0.875rem 1rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 2px solid transparent;
-  border-radius: 12px;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  margin-bottom: 1rem;
-  height: 48px;
-  box-sizing: border-box;
-  color: black;
+.cardheader::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 4px;
+  background: linear-gradient(90deg, #20b2aa, #40e0d0);
+  border-radius: 2px;
+  margin: 0.75rem auto 0;
 }
 
-.card input::placeholder {
-  color: rgba(0, 0, 0, 0.5);
-}
-.card input:focus {
-  outline: none;
-  border-color: #0099ff;
-  background-color: white;
-  box-shadow: 0 0 0 3px rgba(0, 153, 255, 0.1);
+.card p,
+.card .card-text {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
 }
 
 .card h2 {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #444;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
   text-align: left;
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
+  width: 100%;
+}
+
+.card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  width: 100%;
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background-color: #ffffff;
+  border: 2px solid #d8e8e8;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #20b2aa;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(32, 178, 170, 0.15);
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+.email,
+.pass {
+  width: 100%;
+  font-weight: 400;
+}
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.passwordWrapper input {
+  padding-right: 6rem;
+}
+
+.muestrapass {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background: linear-gradient(135deg, #20b2aa, #008080);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.muestrapass:hover {
+  background: linear-gradient(135deg, #008080, #006666);
+}
+
+.forgotPassword {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.card a {
+  color: #008080;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.card a:hover {
+  color: #006666;
+  text-decoration: underline;
+}
+
+.iniciasesion {
+  width: 100%;
+  background: linear-gradient(135deg, #008080, #006666);
+  color: white;
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.email {
-  width: 100%;
-  font-weight: 500;
-}
-
-.pass {
-  width: calc(100% - 105px);
-  display: inline-block;
-  margin-right: 0.5rem;
-  margin-bottom: 0;
-}
-
-.muestrapass {
-  padding: 0.875rem 1rem;
-  font-weight: 600;
-  background-color: #ff9500;
-  border: 2px solid #ff9500;
-  border-radius: 12px;
-  color: white;
-  transition: all 0.3s ease;
-  width: 95px;
-  display: inline-block;
-  font-size: 0.875rem;
-  line-height: 1.2;
-  vertical-align: top;
-  margin-left: 0;
-  margin-bottom: 0;
-  height: 48px;
-}
-
-.muestrapass:hover {
-  background-color: #ff7b00;
-  border-color: #ff7b00;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 149, 0, 0.4);
-}
-
-.iniciasesion {
-  background: #00cc66;
-  color: white;
-  text-align: center;
-  font-weight: 700;
-  padding: 0.875rem 2rem;
-  border-radius: 12px;
-  width: 100%;
-  border: none;
-  margin-top: 1.5rem;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
 .iniciasesion:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 204, 102, 0.4);
-  background: #00b359;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 128, 128, 0.4);
 }
 
-.card a {
-  color: white;
-  text-decoration: underline;
-  font-weight: 600;
-  transition: opacity 0.3s ease;
-}
-
-.card a:hover {
-  opacity: 0.8;
+.iniciasesion:active {
+  transform: translateY(-1px);
 }
 
 .nocuenta {
-  margin-top: 1.5rem;
-  color: white;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px dashed #c8d8d8;
+  color: #666;
   text-align: center;
   font-weight: 500;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem 0 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
 }
 
-.nocuenta .iniciasesion {
-  background: #9b59b6;
+.registrate {
+  background: transparent;
+  color: #008080;
+  border: 2px solid #008080;
+  font-weight: 700;
+  padding: 0.85rem 2.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.registrate:hover {
+  background: #008080;
   color: white;
-  border: 2px solid #9b59b6;
-}
-
-.nocuenta .iniciasesion:hover {
-  background: #8e44ad;
-  border-color: #8e44ad;
-  box-shadow: 0 6px 20px rgba(155, 89, 182, 0.4);
-}
-
-.card > div > p {
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 1.5rem;
-  font-weight: 400;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 128, 128, 0.3);
 }
