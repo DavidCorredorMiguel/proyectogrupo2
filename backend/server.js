@@ -38,6 +38,30 @@ const client = new BedrockRuntimeClient({
   profile: "NoeliaAWS",
 });
 
+// --------- 🟢 NUEVO: MEMORIA GLOBAL ----------
+
+// Conversación en memoria (GLOBAL – sin sessionId)
+let conversation = [
+  {
+    role: "user",
+    content: [
+      {
+        text: `
+Eres TechBot, un asistente virtual de una tienda online de tecnología.
+
+Normas obligatorias:
+- Respuestas medias (máx 15 líneas)
+- NO repetir preguntas ya respondidas
+- Mantén el contexto de la conversación
+- Si el usuario ya indicó el producto, NO cambies de tema
+- Habla como un vendedor, no como un manual técnico
+- Siempre pregunta solo UNA cosa al final
+`,
+      },
+    ],
+  },
+];
+
 /* =========================
    CHAT CON GUARDARRAÍLES
 ========================= */
@@ -81,6 +105,13 @@ app.post("/chat", async (req, res) => {
     });
   }
 
+  // 🟢 NUEVO: guardamos el mensaje del usuario
+conversation.push({
+  role: "user",
+  content: [{ text: message }],
+});
+
+
   try {
     // Configuramos/preparamos la entrada para invocar el modelo de Bedrock
     const input = {
@@ -89,42 +120,14 @@ app.post("/chat", async (req, res) => {
       accept: "application/json", // indicamos que queremos recibir JSON
 
      // convertimos a JSON la entrada con el mensaje y el guardarraíl
-      body: JSON.stringify({
-        messages: [
-          {
-            // PRIMER MENSAJE: guardarraíl
-            // Ojo: en Nova NO existe role: system
-            role: "user",
-            content: [
-              {
-                text: `
-Eres TechBot, un asistente especializado EXCLUSIVAMENTE en:
-- electrónica
-- dispositivos electrónicos
-- hardware
-- informática
-- tecnología de consumo
+// 🔴 CAMBIO IMPORTANTE
+body: JSON.stringify({
+  messages: conversation, // 👈 AQUÍ ESTÁ LA MEMORIA
+  inferenceConfig: {
+    maxTokens: 120,
+  },
+}),
 
-Si el usuario saluda, responde amablemente.
-Si pregunta algo fuera de este ámbito,
-responde educadamente que solo puedes ayudar con electrónica.
-`,
-              },
-            ],
-          },
-          {
-            // SEGUNDO MENSAJE: mensaje real del usuario
-            role: "user",
-            content: [{ text: message }],
-          },
-        ],
-
-        // configuración de inferencia (del modelo)
-        inferenceConfig: {
-          // máximo de tokens en la respuesta (del bot) serán aprox. 90 palabras
-          maxTokens: 120,
-        },
-      }),
     };
 
     // mostramos el mensaje recibido en el backend por consola para debug
@@ -162,6 +165,19 @@ responde educadamente que solo puedes ayudar con electrónica.
     // .text contiene la respuesta generada por el modelo .content es un array de objetos los cuales tienen la propiedad text
     // .message es el objeto que contiene la respuesta del modelo 
       parsed?.output?.message?.content?.[0]?.text;
+
+      // 🟢 NUEVO: guardamos la respuesta del bot
+conversation.push({
+  role: "assistant",
+  content: [{ text: botAnswer }],
+});
+
+// 🟡 OPCIONAL PERO RECOMENDADO
+if (conversation.length > 12) {
+  // mantenemos el guardarraíl y los últimos mensajes
+  conversation.splice(1, 2);
+}
+
 
 
     // si no hay respuesta del bot, enviamos un mensaje predeterminado
