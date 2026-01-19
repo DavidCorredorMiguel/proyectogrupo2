@@ -126,15 +126,14 @@ const ProductList = ({
                   <button
                     onClick={() => handlePriceRangeClick(range.min, range.max)}
                     className={`w-full text-left px-3 py-2.5 rounded-lg transition-all text-sm flex items-center gap-3
-                      ${
-                        priceRange.min === range.min &&
-                        priceRange.max === range.max
-                          ? "bg-teal-50 text-teal-700 font-semibold border-l-4 border-teal-600 shadow-sm"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-4 border-transparent"
-                      }`}
+        ${
+          priceRange.min === range.min && priceRange.max === range.max
+            ? "bg-teal-50 text-teal-700 font-semibold border-l-4 border-teal-600 shadow-sm"
+            : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-4 border-transparent"
+        }`}
                   >
                     <FontAwesomeIcon icon={faCartPlus} />
-                    Añadir al carrito
+                    {range.label}
                   </button>
                 </li>
               ))}
