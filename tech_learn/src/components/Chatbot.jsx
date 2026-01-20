@@ -32,7 +32,8 @@ export default function Chatbot() {
     // Actualiza el estado de mensajes y limpia el input
     setMessages(newMessages);
     setInput("");
-    // Envía el mensaje al bot y espera la respuesta, pedimos la respuesta asincrónicamente
+
+    // Envía el mensaje al bot (cahtService) y espera la respuesta, pedimos la respuesta asincrónicamente
     const answer = await sendMessageToBot(input);
     // se añade la respuesta del bot a los mensajes
     setMessages([...newMessages, { from: "bot", text: answer }]);
