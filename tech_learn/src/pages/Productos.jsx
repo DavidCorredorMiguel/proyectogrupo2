@@ -9,7 +9,6 @@ const normalize = (str) => {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 };
-
 const Productos = () => {
   const [searchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState("grid"); // 'grid' o 'list'
@@ -27,7 +26,6 @@ const Productos = () => {
 
     return nameMatch && product.category === categoria;
   });
-
   return (
     <div className="container py-4">
       <div className="flex justify-between items-center mb-4">
@@ -65,7 +63,6 @@ const Productos = () => {
           </button>
         </div>
       </div>
-
       {filteredProducts.length > 0 ? (
         <ProductList
           products={filteredProducts}
