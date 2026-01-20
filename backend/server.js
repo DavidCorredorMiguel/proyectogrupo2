@@ -293,9 +293,12 @@ app.get("/products/most-viewed", (req, res) => {
    SERVIDOR ON
 ========================= */
 
-// arrancamos el servidor en el puerto 3001
-app.listen(3001, () => {
+// arrancamos el servidor en el puerto definido o 3001 por defecto
+
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
   console.log(
-    "✅ Backend escuchando en http://localhost:3001"
-  );
+    `✅ Backend escuchando en ${PORT}`
+    );
 });

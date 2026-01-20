@@ -28,7 +28,7 @@ const ProductList = ({
   const displayProducts = products || mockProducts;
 
   useEffect(() => {
-    fetch("http://localhost:3001/products/most-viewed")
+    fetch("https://techbot-backend-ekam.onrender.com/products/most-viewed")
       .then((r) => r.json())
       .then((data) => {
         setTopViewedIds(data.map((x) => x.id));
