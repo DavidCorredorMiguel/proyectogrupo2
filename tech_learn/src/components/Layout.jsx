@@ -20,7 +20,10 @@ const Layout = ({ children }) => {
       <div className="d-flex flex-column min-vh-100">
         <Header />
         <NavPages />
-        <main className="flex-grow-1 container py-4">{children}</main>
+        <main className="flex-grow-1 container py-4 mb-4">
+  {children}
+</main>
+
         <Footer />
       </div>
     </TemaProvider>
