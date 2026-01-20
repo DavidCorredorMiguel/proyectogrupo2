@@ -10,11 +10,11 @@ function FinalizarCompra() {
 
   return (
     <section
-      className="max-w-xs mx-auto my-24 rounded-3xl shadow-xl
-      bg-white text-gray-900
-      dark:bg-neutral-800 dark:text-white
-      transition-colors
-      p-5"
+      className="max-w-xs mx-auto my-24 bg-white border border-gray-300
+  rounded-3xl shadow-md p-5
+  text-gray-900
+  dark:bg-neutral-800 dark:border-neutral-700 dark:text-white
+  transition-colors"
     >
       {/* ICONO */}
       <div className="flex justify-center mb-3">

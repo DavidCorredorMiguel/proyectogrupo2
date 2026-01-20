@@ -40,7 +40,8 @@ const CestaProduct = () => {
           {/* LISTA PRODUCTOS */}
           <div className="col-lg-8">
             {cart.map((item) => (
-              <div key={item.id} className="card mb-3 shadow-sm border-0">
+              <div key={item.id} className="card mb-3 shadow-sm border"
+>
                 <div className="card-body">
                   <div className="row align-items-center">
                     {/* IMAGEN */}

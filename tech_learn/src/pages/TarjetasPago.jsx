@@ -28,7 +28,7 @@ const TarjetasPago = () => {
   };
 
   return (
-    <section className="max-w-sm mx-auto my-16 bg-white rounded-2xl shadow-xl p-4 flex flex-col gap-4">
+    <section className="max-w-sm mx-auto my-16 bg-white border border-gray-300 rounded-2xl shadow-md p-4 flex flex-col gap-4">
       {/* TARJETA */}
       <div className="flex justify-center  to-black p-6 rounded-xl relative top-3">
         <Cards
