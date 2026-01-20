@@ -355,28 +355,23 @@ const ProductList = ({
             ))}
           </div>
         )}
-
         {/* PAGINACIÓN */}
         {showPagination && filteredProducts.length > 0 && (
-          <div className="w-full py-16">
+          <div className="w-full py-16" style={{ marginTop: '1.25rem' }}>
             <div className="flex justify-center items-center gap-4">
-              <button
-                onClick={() => setCurrentPage(currentPage - 1)}
+              <button onClick={() => setCurrentPage(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="px-4 py-2 text-white rounded bg-orange-500 hover:bg-orange-600 disabled:opacity-50"
-              >
+                className="px-4 py-2 text-white rounded bg-orange-500 
+                  hover:bg-orange-600 disabled:opacity-50">
                 ⬅ Anterior
               </button>
-
               <span className="font-semibold">
                 Página {currentPage} de {totalPages}
               </span>
-
-              <button
-                onClick={() => setCurrentPage(currentPage + 1)}
+              <button onClick={() => setCurrentPage(currentPage + 1)}
                 disabled={indexOfLastProduct >= filteredProducts.length}
-                className="px-4 py-2 text-white rounded bg-orange-500 hover:bg-orange-600 disabled:opacity-50"
-              >
+                className="px-4 py-2 text-white rounded bg-orange-500 
+                  hover:bg-orange-600 disabled:opacity-50">
                 Siguiente ➡
               </button>
             </div>
