@@ -18,12 +18,11 @@ const saveFavorites = (userId, favorites) => {
 // Agregar producto a favoritos (sin duplicados)
 export const addProductToFavorites = (userId, productId) => {
   const favorites = getFavorites(userId);
-
-  // Si ya existe, no hacer nada
+  
   if (favorites.includes(productId)) {
     return favorites;
   }
-
+  
   const updatedFavorites = [...favorites, productId];
   saveFavorites(userId, updatedFavorites);
   return updatedFavorites;
@@ -40,7 +39,7 @@ export const removeProductFromFavorites = (userId, productId) => {
 // Toggle: agregar si no existe, eliminar si existe
 export const toggleFavorite = (userId, productId) => {
   const favorites = getFavorites(userId);
-
+  
   if (favorites.includes(productId)) {
     return removeProductFromFavorites(userId, productId);
   } else {
