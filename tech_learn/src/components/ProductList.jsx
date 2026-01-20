@@ -3,23 +3,29 @@ import PropTypes from "prop-types";
 import { mockProducts } from "../mocks/products";
 import ProductCard from "./ProductCard";
 import { addProductToCart } from "../mocks/cartService";
+import { toggleFavorite, isFavorite } from "../mocks/favoritesService";
 import RecommendationRow from "./RecommendationRow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ProductList = ({
   products,
   viewMode = "grid",
   showPagination = true,
+  userId = "user123", // ID del usuario actual
 }) => {
   const [cart, setCart] = useState([]);
   const [topViewedIds, setTopViewedIds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [favorites, setFavorites] = useState({});
   const productsPerPage = 6;
 
   const [priceRange, setPriceRange] = useState({ min: 0, max: Infinity });
   const [customMin, setCustomMin] = useState("");
   const [customMax, setCustomMax] = useState("");
+
+  // Definir displayProducts ANTES de usarlo
+  const displayProducts = products || mockProducts;
 
   useEffect(() => {
     fetch("http://localhost:3001/products/most-viewed")
@@ -27,21 +33,28 @@ const ProductList = ({
       .then((data) => {
         setTopViewedIds(data.map((x) => x.id));
       })
-      .catch(() => {});
+      .catch(() => { });
   }, []);
+
+  // Cargar favoritos al montar - ahora displayProducts ya está definido
+  useEffect(() => {
+    const favs = {};
+    displayProducts.forEach((product) => {
+      favs[product.id] = isFavorite(userId, product.id);
+    });
+    setFavorites(favs);
+  }, [userId, displayProducts]);
 
   const getAvgRating = (product) =>
     product.reviews?.length
       ? product.reviews.reduce((s, r) => s + r.rating, 0) /
-        product.reviews.length
+      product.reviews.length
       : 0;
 
   const mostViewedProducts = topViewedIds
     .map((id) => mockProducts.find((p) => p.id === id))
     .filter(Boolean)
     .slice(0, 6);
-
-  const displayProducts = products || mockProducts;
 
   const maxPrice = useMemo(() => {
     return Math.max(...displayProducts.map((p) => p.price));
@@ -69,6 +82,15 @@ const ProductList = ({
   const handleAddToCart = (product) => {
     const updated = addProductToCart(product);
     setCart(updated);
+  };
+
+  const handleToggleFavorite = (productId) => {
+    console.log("Toggle favorito en ProductList:", productId, userId); // Debug
+    toggleFavorite(userId, productId);
+    setFavorites((prev) => ({
+      ...prev,
+      [productId]: !prev[productId],
+    }));
   };
 
   const handlePriceRangeClick = (min, max) => {
@@ -111,7 +133,8 @@ const ProductList = ({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 
+                  00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
                 />
               </svg>
               Filtrar por precio
@@ -126,12 +149,10 @@ const ProductList = ({
                   <button
                     onClick={() => handlePriceRangeClick(range.min, range.max)}
                     className={`w-full text-left px-3 py-2.5 rounded-lg transition-all text-sm flex items-center gap-3
-        ${
-          priceRange.min === range.min && priceRange.max === range.max
-            ? "bg-teal-50 text-teal-700 font-semibold border-l-4 border-teal-600 shadow-sm"
-            : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-4 border-transparent"
-        }`}
-                  >
+        ${priceRange.min === range.min && priceRange.max === range.max
+                        ? "bg-teal-50 text-teal-700 font-semibold border-l-4 border-teal-600 shadow-sm"
+                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-4 border-transparent"
+                      }`}>
                     <FontAwesomeIcon icon={faCartPlus} />
                     {range.label}
                   </button>
@@ -164,7 +185,9 @@ const ProductList = ({
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 
+                    0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 
+                    12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
                 Rango personalizado
@@ -252,13 +275,26 @@ const ProductList = ({
           <div className="grid grid-cols-1 gap-4">
             {productsToRender.map((product) => {
               const avgRating = getAvgRating(product);
+              const isFav = favorites[product.id] || false;
 
               return (
                 <div
                   key={product.id}
                   className="flex gap-4 bg-white rounded-lg shadow-md 
-        overflow-hidden hover:shadow-lg transition-shadow"
+        overflow-hidden hover:shadow-lg transition-shadow relative"
                 >
+                  {/* Botón de favoritos */}
+                  <button
+                    onClick={() => handleToggleFavorite(product.id)}
+                    className="absolute top-2 right-2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-md hover:scale-110 transition-all"
+                    aria-label={isFav ? "Quitar de favoritos" : "Añadir a favoritos"}
+                  >
+                    <FontAwesomeIcon
+                      icon={faHeart}
+                      className={`text-xl ${isFav ? "text-red-500" : "text-gray-400"}`}
+                    />
+                  </button>
+
                   <img
                     src={product.image}
                     alt={product.name}
@@ -306,6 +342,15 @@ const ProductList = ({
                 key={product.id}
                 product={product}
                 onAddToCart={handleAddToCart}
+                userId={userId}
+                onFavoriteToggle={() => {
+                  // Recargar favoritos cuando cambian desde ProductCard
+                  const favs = {};
+                  displayProducts.forEach((p) => {
+                    favs[p.id] = isFavorite(userId, p.id);
+                  });
+                  setFavorites(favs);
+                }}
               />
             ))}
           </div>
@@ -363,6 +408,7 @@ ProductList.propTypes = {
   ),
   viewMode: PropTypes.oneOf(["grid", "list"]),
   showPagination: PropTypes.bool,
+  userId: PropTypes.string,
 };
 
 export default ProductList;

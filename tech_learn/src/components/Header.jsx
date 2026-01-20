@@ -4,17 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import logoImg from '../assets/images/logo.png';
 import { mockProducts } from '../mocks/products';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
 import BotonTema from './BotonTema';
 // Extraer categorías únicas del mock
 const categories = [
-...new Set(
-mockProducts
-.map(p => p.category)
-.filter(cat => cat && cat.trim() !== '')
-)
+  ...new Set(mockProducts.map(p => p.category).filter(cat => cat && cat.trim() !== ''))
 ];
-
 const Header = () => {
   const { isLoggedIn, user, logout } = useAuthStore();
   const navigate = useNavigate();
@@ -38,7 +33,7 @@ const Header = () => {
       bg-gradient-to-r from-slate-950 to-[#008B8B] text-white sticky top-0 z-50">
       {/* Columna 1: Logo */}
       <div className="logo cursor-pointer font-bold text-xl hover:opacity-80"
-        onClick={() => navigate('/')} >
+        onClick={() => navigate('/')}>
         <img src={logoImg} className="h-20 w-auto object-contain" alt="Logo Tech & Learn" />
       </div>
       {/* Columna 2: Buscador */}
@@ -46,7 +41,7 @@ const Header = () => {
         <div className="input-group">
           <select className="form-select" style={{ maxWidth: '180px' }}
             value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)} >
+            onChange={(e) => setSelectedCategory(e.target.value)}>
             <option value="todas">Categorías</option>
             {categories.map(cat => (
               <option key={cat} value={cat}>{cat}</option>
@@ -67,8 +62,18 @@ const Header = () => {
             <span className="hidden md:inline">👤 {user?.name}</span>
             <button className="btn btn-outline-light transition-all hover:scale-105"
               onClick={handleLogout}>Cerrar Sesión</button>
-            <button onClick={() => navigate('/cesta')}>
-              <FontAwesomeIcon icon={faShoppingCart} /> Cesta</button>
+            {/* Botón Favoritos */}
+            <button onClick={() => navigate('/favoritos')}
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 
+              hover:bg-white/20 transition-all hover:scale-110" aria-label="Ver favoritos">
+              <FontAwesomeIcon icon={faHeart} className="text-red-400" />
+            </button>
+            {/* Botón Cesta */}
+            <button onClick={() => navigate('/cesta')}
+              className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 
+                hover:bg-white/20 transition-all hover:scale-110" aria-label="Ver cesta">
+              <FontAwesomeIcon icon={faShoppingCart} />
+            </button>
           </>
         ) : (
           <button className="btn btn-primary transition-all hover:scale-105"
