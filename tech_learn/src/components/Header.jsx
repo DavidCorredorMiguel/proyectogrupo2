@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import logoImg from '../assets/images/logo.png';
 import { mockProducts } from '../mocks/products';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faHeart,faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import BotonTema from './BotonTema';
 import '../styles/Header.css';
 // Extraer categorías únicas del mock
@@ -61,9 +61,9 @@ const Header = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleKeyDown}
           />
-          <button className="btn btn-primary search-btn" onClick={handleSearch}>
-            🔍
-          </button>
+<button className="btn btn-primary search-btn" onClick={handleSearch}>
+  <FontAwesomeIcon icon={faMagnifyingGlass} />
+</button>
         </div>
       </div>
 
