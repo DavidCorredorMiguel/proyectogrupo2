@@ -1,0 +1,95 @@
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* HOME - Coherente con Header y Footer                                        */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.home {
+    min-height: calc(100vh - 200px);
+    /* Ajusta según altura real de header+footer */
+    background-color: #f0fdfa;
+    /* teal-50 */
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* HERO                                                                        */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.home-hero {
+    background: linear-gradient(135deg, #115e59 0%, #0f766e 50%, #134e4a 100%);
+    color: #ffffff;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.home-hero-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.home-hero-subtitle {
+    font-size: 1.25rem;
+    color: #ccfbf1;
+    /* teal-100 */
+    margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* PRODUCTOS DESTACADOS                                                        */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.home-featured {
+    padding: 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.home-featured-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #115e59;
+    margin: 0 0 2rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 3px solid #14b8a6;
+    width: fit-content;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* RESPONSIVE                                                                  */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .home-hero {
+        padding: 3rem 1.5rem;
+    }
+
+    .home-hero-title {
+        font-size: 1.875rem;
+    }
+
+    .home-hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .home-featured {
+        padding: 2rem 1rem;
+    }
+
+    .home-featured-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-hero {
+        padding: 2.5rem 1rem;
+    }
+
+    .home-hero-title {
+        font-size: 1.5rem;
+    }
+
+    .home-featured {
+        padding: 1.5rem 1rem;
+    }
+}

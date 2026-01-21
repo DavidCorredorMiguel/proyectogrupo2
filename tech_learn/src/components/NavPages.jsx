@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faBoxOpen, 
-  faEnvelope, faIdCardClip, } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faBoxOpen, faEnvelope, faIdCardClip } from "@fortawesome/free-solid-svg-icons";
+import '../styles/NavPages.css';
+
 const NavPages = () => {
   const navItems = [
     { path: "/", label: "Inicio", icon: faHome },
@@ -9,27 +10,26 @@ const NavPages = () => {
     { path: "/tarjetasaprender", label: "Tarjetas Aprender", icon: faIdCardClip },
     { path: "/aboutus", label: "Sobre Nosotros", icon: faEnvelope },
   ];
+
   return (
-    <nav className="bg-dark py-2">
-      <div className="container">
-        <ul className="nav justify-content-center gap-4">
-          {navItems.map((item) => (
-            <li key={item.path} className="nav-item">
-              <NavLink to={item.path}
-                className={({ isActive }) =>
-                  `nav-link d-flex align-items-center 
-                    gap-2 transition-all hover:scale-105 ${
-                    isActive ? "text-white font-bold" 
-                    : "text-gray-300 hover:text-white"
-                  }`
-                }>
-                <FontAwesomeIcon icon={item.icon} />{item.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <nav className="nav-pages">
+      <ul className="nav-pages-list">
+        {navItems.map((item) => (
+          <li key={item.path} className="nav-pages-item">
+            <NavLink
+              to={item.path}
+              className={({ isActive }) =>
+                `nav-pages-link ${isActive ? "nav-pages-link--active" : ""}`
+              }
+            >
+              <FontAwesomeIcon icon={item.icon} className="nav-pages-icon" />
+              <span>{item.label}</span>
+            </NavLink>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };
+
 export default NavPages;

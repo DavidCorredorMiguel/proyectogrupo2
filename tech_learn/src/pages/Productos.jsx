@@ -15,7 +15,7 @@ const normalize = (str) => {
 
 const Productos = () => {
   const [searchParams] = useSearchParams();
-  const [viewMode, setViewMode] = useState("grid"); // 'grid' o 'list'
+  const [viewMode, setViewMode] = useState("grid");
   const { user } = useAuthStore();
 
   const categoria = searchParams.get("categoria") || "todas";
@@ -33,8 +33,8 @@ const Productos = () => {
   });
 
   return (
-    <div className="container py-4">
-      <div className="flex justify-between items-center mb-4">
+    <div className="px-4 py-4 max-w-7xl mx-auto">
+      <div className="flex flex-wrap justify-between items-center mb-4 gap-4">
         <div>
           <h1 className="text-2xl font-semibold mb-2">Resultados de búsqueda</h1>
           <p className="text-gray-600">
@@ -42,7 +42,6 @@ const Productos = () => {
             {categoria !== "todas" && ` en ${categoria}`}
           </p>
         </div>
-        {/* Botones de vista con estilos consistentes */}
         <div className="flex gap-2">
           <button
             onClick={() => setViewMode("grid")}
@@ -50,7 +49,9 @@ const Productos = () => {
               viewMode === "grid"
                 ? "bg-teal-600 text-white shadow-md"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            }`} aria-label="Vista de cuadrícula">
+            }`}
+            aria-label="Vista de cuadrícula"
+          >
             <FontAwesomeIcon icon={faThLarge} className="mr-2" />
             Cuadrícula
           </button>
@@ -60,7 +61,9 @@ const Productos = () => {
               viewMode === "list"
                 ? "bg-teal-600 text-white shadow-md"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            }`} aria-label="Vista de lista">
+            }`}
+            aria-label="Vista de lista"
+          >
             <FontAwesomeIcon icon={faList} className="mr-2" />
             Lista
           </button>
@@ -68,8 +71,13 @@ const Productos = () => {
       </div>
 
       {filteredProducts.length > 0 ? (
-        <ProductList products={filteredProducts} viewMode={viewMode}
-          showPagination={true} userId={user?.id || "user123"} />
+        <ProductList
+          products={filteredProducts}
+          viewMode={viewMode}
+          showPagination={true}
+          showFilters={true}
+          userId={user?.id || "user123"}
+        />
       ) : (
         <p className="text-center text-gray-500 py-8">
           No se encontraron productos que coincidan con tu búsqueda.
