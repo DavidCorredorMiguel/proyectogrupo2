@@ -35,13 +35,16 @@ const Productos = () => {
   return (
     <div className="px-4 py-4 max-w-7xl mx-auto">
       <div className="flex flex-wrap justify-between items-center mb-4 gap-4">
-        <div>
-          <h1 className="text-2xl font-semibold mb-2">Resultados de búsqueda</h1>
-          <p className="text-gray-600">
-            {filteredProducts.length} producto(s) encontrado(s) para "{query}"
-            {categoria !== "todas" && ` en ${categoria}`}
-          </p>
-        </div>
+<div>
+  <h1 className="text-2xl font-semibold mb-2">
+    {query ? "Resultados de búsqueda" : "Todos los productos"}
+  </h1>
+  <p className="text-gray-600">
+    {filteredProducts.length} producto(s) encontrado(s)
+    {query && ` para "${query}"`}
+    {categoria !== "todas" && ` en ${categoria}`}
+  </p>
+</div>
         <div className="flex gap-2">
           <button
             onClick={() => setViewMode("grid")}
