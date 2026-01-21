@@ -1,17 +1,7 @@
-/* ═══════════════════════════════════════════════════════════════════════════ */
-/* HOME - Coherente con Header y Footer                                        */
-/* ═══════════════════════════════════════════════════════════════════════════ */
-
 .home {
     min-height: calc(100vh - 200px);
-    /* Ajusta según altura real de header+footer */
-    background-color: #f0fdfa;
-    /* teal-50 */
+    background-color: var(--color-fondo);
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════ */
-/* HERO                                                                        */
-/* ═══════════════════════════════════════════════════════════════════════════ */
 
 .home-hero {
     background: linear-gradient(135deg, #115e59 0%, #0f766e 50%, #134e4a 100%);
@@ -30,13 +20,8 @@
 .home-hero-subtitle {
     font-size: 1.25rem;
     color: #ccfbf1;
-    /* teal-100 */
     margin: 0;
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════ */
-/* PRODUCTOS DESTACADOS                                                        */
-/* ═══════════════════════════════════════════════════════════════════════════ */
 
 .home-featured {
     padding: 3rem 2rem;
@@ -47,16 +32,12 @@
 .home-featured-title {
     font-size: 1.75rem;
     font-weight: 600;
-    color: #115e59;
+    color: var(--color-texto);
     margin: 0 0 2rem 0;
     padding-bottom: 0.75rem;
     border-bottom: 3px solid #14b8a6;
     width: fit-content;
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════ */
-/* RESPONSIVE                                                                  */
-/* ═══════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
     .home-hero {
