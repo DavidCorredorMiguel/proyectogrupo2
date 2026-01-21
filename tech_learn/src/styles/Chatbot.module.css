@@ -84,3 +84,40 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
     border-bottom-left-radius: 0.25rem;
 }
+/* INPUT DE TEXTO */
+.inputBar input {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: 2px solid #0d9488;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  outline: none;
+  background-color: #ffffff;
+  color: #1f2937;
+  /* Texto siempre oscuro */
+}
+
+.inputBar input::placeholder {
+  color: #9ca3af;
+  /* Placeholder gris medio */
+}
+
+.inputBar input:focus {
+  border-color: #14b8a6;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
+}
+
+/* BOTÓN ENVIAR */
+.inputBar button {
+  padding: 0.5rem 1rem;
+  background-color: #0d9488;
+  color: white;
+  border: none;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.inputBar button:hover {
+  background-color: #0f766e;
+}

@@ -1,5 +1,6 @@
 import { mockProducts } from "../mocks/products";
 import ProductList from "../components/ProductList";
+import "../styles/Home.css";
 
 const Home = () => {
   const destacados = [...mockProducts]
@@ -7,18 +8,21 @@ const Home = () => {
     .slice(0, 6);
 
   return (
-    <>
-      {/* Banner/Hero */}
-      <section className="bg-primary text-white rounded p-5 mb-4 text-center">
-        <h1 className="font-bold text-4xl mb-3">Bienvenido a Tech-learn</h1>
-        <p className="text-xl mb-4">Los mejores productos al mejor precio</p>
+    <main className="home">
+      <section className="home-hero">
+        <h1 className="home-hero-title">Bienvenido a Tech-learn</h1>
+        <p className="home-hero-subtitle">Los mejores productos al mejor precio</p>
       </section>
-      {/* Lista de productos */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-4">Productos destacados</h2>
-        <ProductList products={destacados} showPagination={false} />
+
+      <section className="home-featured">
+        <h2 className="home-featured-title">Productos destacados</h2>
+        <ProductList 
+          products={destacados} 
+          showPagination={false} 
+          showFilters={false}
+        />
       </section>
-    </>
+    </main>
   );
 };
 

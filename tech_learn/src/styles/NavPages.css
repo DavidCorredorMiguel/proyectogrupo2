@@ -1,0 +1,112 @@
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* NAVBAR PÁGINAS                                                              */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.nav-pages {
+  background-color: #1a1a2e;
+  padding: 0.75rem 0;
+  margin: 0;
+}
+
+.nav-pages-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-pages-item {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-pages-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  color: #94a3b8; /* slate-400 - buen contraste sobre oscuro */
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-pages-link:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-pages-link--active {
+  color: #2dd4bf; /* teal-400 */
+  font-weight: 600;
+}
+
+.nav-pages-link--active:hover {
+  color: #5eead4; /* teal-300 */
+}
+
+.nav-pages-icon {
+  font-size: 1rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ACCESIBILIDAD                                                               */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.nav-pages-link:focus-visible {
+  outline: 2px solid #2dd4bf;
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* RESPONSIVE                                                                  */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  .nav-pages-list {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-pages-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .nav-pages-icon {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-pages-list {
+    gap: 0.5rem;
+  }
+
+  .nav-pages-link span {
+    display: none;
+  }
+
+  .nav-pages-link {
+    padding: 0.5rem;
+  }
+
+  .nav-pages-icon {
+    font-size: 1.1rem;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* RESPETA PREFERENCIAS DE MOVIMIENTO                                          */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-pages-link {
+    transition: none;
+  }
+}
