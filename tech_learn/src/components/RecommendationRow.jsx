@@ -1,50 +1,56 @@
 import { useRef } from "react";
 import ProductCard from "./ProductCard";
-//componente y sus props
+
 const RecommendationRow = ({ title, products }) => {
-  const rowRef = useRef(null); //referencia al contenedor scroll
-  //funciones para scrollar a la izquierda y derecha
+  const rowRef = useRef(null);
+
   const scrollLeft = () => {
     rowRef.current.scrollBy({ left: -320, behavior: "smooth" });
   };
+
   const scrollRight = () => {
     rowRef.current.scrollBy({ left: 320, behavior: "smooth" });
   };
+
   return (
-    <section className="mt-5 relative max-w-6xl mx-auto">
-      {/* TÍTULO */}
-      <h4 className="mb-3">{title}</h4>
+    <section className="mt-8 relative">
+      <h4 className="text-xl font-semibold mb-4">{title}</h4>
 
-      {/* FLECHA IZQUIERDA */}
-      <button
-        onClick={scrollLeft}
-        className="position-absolute top-50 translate-middle-y btn btn-light rounded-circle shadow"
-        style={{ left: "-18px", zIndex: 10 }}
-      >
-        ◀
-      </button>
-      {/* FLECHA DERECHA */}
-      <button
-        onClick={scrollRight}
-        className="position-absolute top-50 translate-middle-y btn btn-light rounded-circle shadow"
-        style={{ right: "-18px", zIndex: 10 }}
-      >
-        ▶
-      </button>
+      {/* Contenedor con flechas */}
+      <div className="relative">
+        {/* FLECHA IZQUIERDA */}
+        <button
+          onClick={scrollLeft}
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10
+            w-10 h-10 bg-white rounded-full shadow-lg
+            flex items-center justify-center
+            hover:bg-gray-100 transition-colors"
+          aria-label="Anterior"
+        >
+          ◀
+        </button>
 
-      <div className="mx-auto w-fit relative px-4">
+        {/* FLECHA DERECHA */}
+        <button
+          onClick={scrollRight}
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10
+            w-10 h-10 bg-white rounded-full shadow-lg
+            flex items-center justify-center
+            hover:bg-gray-100 transition-colors"
+          aria-label="Siguiente"
+        >
+          ▶
+        </button>
+
         {/* CONTENEDOR SCROLL */}
         <div
           ref={rowRef}
-          className="flex gap-4 overflow-x-auto scrollbar-hide"
+          className="flex gap-4 overflow-x-auto scrollbar-hide px-6 py-2"
           style={{ scrollBehavior: "smooth" }}
         >
           {products.map((product) => (
-            <div key={product.id} style={{ minWidth: "260px", flexShrink: 0 }}>
-              <ProductCard
-                product={product}
-                //hideAddToCart={true} se puede usar si no queremos mostrar el botón de añadir al carrito
-              />
+            <div key={product.id} className="min-w-[260px] flex-shrink-0">
+              <ProductCard product={product} />
             </div>
           ))}
         </div>
@@ -52,4 +58,5 @@ const RecommendationRow = ({ title, products }) => {
     </section>
   );
 };
+
 export default RecommendationRow;

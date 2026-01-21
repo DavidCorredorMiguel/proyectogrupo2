@@ -1,0 +1,275 @@
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* FOOTER - Mismo estilo que Header                                            */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.footer {
+  background-color: #115e59; /* teal-800 igual que header */
+  color: #ffffff;
+  padding: 1.5rem 2rem;
+  margin-top: auto;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* LOGO CON BORDE ANIMADO (igual que header)                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-logo-wrapper {
+  position: relative;
+  padding: 6px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #0f766e, #134e4a);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: fit-content;
+}
+
+.footer-logo-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 19px;
+  padding: 3px;
+  background: linear-gradient(
+    90deg,
+    #14b8a6,
+    #1e3a5f,
+    #06b6d4,
+    #14b8a6
+  );
+  background-size: 300% 100%;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: footerBorderGlow 4s linear infinite;
+}
+
+@keyframes footerBorderGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+.footer-logo-wrapper:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 25px rgba(20, 184, 166, 0.5),
+    0 0 50px rgba(30, 58, 95, 0.4);
+}
+
+.footer-logo-wrapper:hover::before {
+  animation-duration: 1s;
+}
+
+.footer-logo-img {
+  display: block;
+  height: 4rem;
+  width: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-slogan {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* SECCIONES                                                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-title {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ENLACES                                                                     */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #2dd4bf;
+}
+
+.footer-links a:focus-visible {
+  outline: 2px solid #2dd4bf;
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* REDES SOCIALES                                                              */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social a {
+  color: #94a3b8;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.footer-social a:hover {
+  color: #2dd4bf;
+  transform: scale(1.15);
+}
+
+.footer-social a:focus-visible {
+  outline: 2px solid #2dd4bf;
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* COPYRIGHT                                                                   */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+.footer-copyright {
+  justify-content: center;
+}
+
+.footer-copyright p {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-copy-btn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.footer-copy-btn:hover {
+  color: #2dd4bf;
+}
+
+.footer-copy-btn:focus-visible {
+  outline: 2px solid #2dd4bf;
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* RESPONSIVE                                                                  */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-section {
+    align-items: center;
+  }
+
+  .footer-logo-img {
+    height: 3rem;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-copyright {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .footer-copyright p {
+    justify-content: center;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/* ACCESIBILIDAD                                                               */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-logo-wrapper::before {
+    animation: none;
+  }
+
+  .footer-logo-wrapper:hover::before {
+    animation: none;
+  }
+
+  .footer-logo-wrapper,
+  .footer-links a,
+  .footer-social a,
+  .footer-copy-btn {
+    transition: none;
+  }
+}
