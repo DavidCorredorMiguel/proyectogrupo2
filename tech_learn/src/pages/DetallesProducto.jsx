@@ -13,7 +13,7 @@ export default function DetalleProducto() {
   useEffect(() => {
     if (!product) return;
 
-    fetch(`http://localhost:3001/products/${product.id}/view`, {
+    fetch(`https://techbot-backend-ekam.onrender.com/products/${product.id}/view`, {
       method: "POST",
     }).catch(() => {});
   }, [product]);
