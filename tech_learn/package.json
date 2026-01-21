@@ -22,6 +22,7 @@
     "bootstrap-icons": "^1.13.1",
     "react": "^19.2.0",
     "react-bootstrap": "^2.10.10",
+    "react-credit-cards-2": "^1.0.3",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.9.6",
     "tailwindcss": "^4.1.17",
