@@ -2,40 +2,18 @@
 export const mockQuestions = [
   {
     id: 1,
-    pregunta: "¿Cuál es el procesador del Portátil Gaming?",
+    pregunta: "¿Cuánta memoria RAM (para hacer varias cosas a la vez) tiene el Portátil Gaming?",
     respuestas: [
-      "Intel Core i5",
-      "Intel Core i7",
-      "AMD Ryzen 7",
-      "Intel Core i9"
+      "8 GB",
+      "16 GB",
+      "32 GB",
+      "64 GB"
     ],
     respuestaCorrecta: 1 // índice de la respuesta correcta
   },
   {
     id: 2,
-    pregunta: "¿Qué tipo de switches tiene el Teclado Mecánico?",
-    respuestas: [
-      "Cherry MX Blue",
-      "Cherry MX Brown",
-      "Cherry MX Red",
-      "Gateron Red"
-    ],
-    respuestaCorrecta: 2
-  },
-  {
-    id: 3,
-    pregunta: "¿Cuál es la resolución del Monitor 27\"?",
-    respuestas: [
-      "1920x1080",
-      "2560x1440",
-      "3840x2160",
-      "1680x1050"
-    ],
-    respuestaCorrecta: 1
-  },
-  {
-    id: 4,
-    pregunta: "¿Cuántas horas de batería tienen los Auriculares Bluetooth?",
+    pregunta: "¿Cuántas horas duran los Auriculares Bluetooth con una carga?",
     respuestas: [
       "20 horas",
       "25 horas",
@@ -45,69 +23,91 @@ export const mockQuestions = [
     respuestaCorrecta: 2
   },
   {
-    id: 5,
-    pregunta: "¿Qué DPI máximo tiene el Ratón Gaming?",
+    id: 3,
+    pregunta: "¿Qué tamaño de pantalla tiene el Monitor?",
     respuestas: [
-      "12000",
-      "14000",
-      "16000",
-      "18000"
+      "24 pulgadas",
+      "27 pulgadas",
+      "32 pulgadas",
+      "34 pulgadas"
+    ],
+    respuestaCorrecta: 1
+  },
+  {
+    id: 4,
+    pregunta: "¿Cuánto espacio de almacenamiento tiene el Portátil Gaming?",
+    respuestas: [
+      "256 GB",
+      "512 GB",
+      "1 TB (1000 GB)",
+      "2 TB (2000 GB)"
+    ],
+    respuestaCorrecta: 2
+  },
+  {
+    id: 5,
+    pregunta: "¿Los Auriculares tienen cancelación de ruido?",
+    respuestas: [
+      "No tienen",
+      "Solo reducción básica",
+      "Sí, cancelación activa",
+      "Solo en llamadas"
     ],
     respuestaCorrecta: 2
   },
   {
     id: 6,
-    pregunta: "¿A cuántos fps graba la Webcam 4K?",
+    pregunta: "¿Qué calidad de video graba la Webcam?",
     respuestas: [
-      "30 fps",
-      "45 fps",
-      "60 fps",
-      "90 fps"
+      "HD (720p)",
+      "Full HD (1080p)",
+      "2K",
+      "4K (Ultra HD)"
     ],
-    respuestaCorrecta: 2
+    respuestaCorrecta: 3
   },
   {
     id: 7,
-    pregunta: "¿Cuántos GB de RAM tiene el Portátil Gaming?",
+    pregunta: "¿Cuántos botones personalizables tiene el Ratón Gaming?",
     respuestas: [
-      "8 GB",
-      "16 GB",
-      "32 GB",
-      "64 GB"
+      "3 botones",
+      "5 botones",
+      "8 botones",
+      "12 botones"
     ],
-    respuestaCorrecta: 1
+    respuestaCorrecta: 2
   },
   {
     id: 8,
-    pregunta: "¿Qué tarjeta gráfica tiene el Portátil Gaming?",
+    pregunta: "¿El Teclado Mecánico tiene luces de colores?",
     respuestas: [
-      "RTX 4050",
-      "RTX 4060",
-      "RTX 4070",
-      "RTX 4080"
+      "No tiene luces",
+      "Solo luz blanca",
+      "Sí, RGB (muchos colores)",
+      "Solo luz roja"
+    ],
+    respuestaCorrecta: 2
+  },
+  {
+    id: 9,
+    pregunta: "¿Cuánto pesa el Ratón Gaming?",
+    respuestas: [
+      "75 gramos",
+      "95 gramos",
+      "120 gramos",
+      "150 gramos"
     ],
     respuestaCorrecta: 1
   },
   {
-    id: 9,
-    pregunta: "¿Qué tasa de refresco tiene el Monitor 27\"?",
-    respuestas: [
-      "60 Hz",
-      "120 Hz",
-      "144 Hz",
-      "240 Hz"
-    ],
-    respuestaCorrecta: 2
-  },
-  {
     id: 10,
-    pregunta: "¿Qué tipo de panel tiene el Monitor 27\"?",
+    pregunta: "¿Qué tipo de cable usa la Webcam para conectarse?",
     respuestas: [
-      "TN",
-      "VA",
-      "IPS",
-      "OLED"
+      "USB normal (USB-A)",
+      "USB-C (más moderno)",
+      "HDMI",
+      "Sin cables (Bluetooth)"
     ],
-    respuestaCorrecta: 2
+    respuestaCorrecta: 1
   }
 ];
