@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { mockQuestions } from '../mocks/mockQuestions';
 
 export default function TarjetasAprender() {
@@ -56,7 +56,7 @@ export default function TarjetasAprender() {
           padding: '2rem', marginBottom: '1.5rem', boxShadow: 'var(--sombra)'}}>
           <h1 style={{ fontSize: '2.25rem', fontWeight: 'bold', textAlign: 'center',
             color: 'var(--color-primario)', marginBottom: '0.5rem'}}>
-            Quiz de Productos
+            Test de Productos
           </h1>
           <p style={{ textAlign: 'center', color: 'var(--color-texto-secundario)',
             marginBottom: '1.5rem'}}>
@@ -70,7 +70,7 @@ export default function TarjetasAprender() {
                 boxShadow: 'var(--sombra)', transition: 'all 0.2s ease' }}
               onMouseOver={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primario-hover)'}
               onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primario)'}>
-              🔄 Reiniciar Quiz
+              🔄 Reiniciar Test
             </button>
           </div>
         </div>
