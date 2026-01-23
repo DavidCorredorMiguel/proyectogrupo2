@@ -21,7 +21,7 @@
 
 .totalReviews {
   font-size: 0.85rem;
-  color: #666;
+  color:white;
   margin: 0.5rem 0 1rem;
 }
 
@@ -92,7 +92,7 @@
 
 .reviewComment {
   font-size: 0.9rem;
-  color: #555;
+  color:white;
 }
 
 .addReview {
@@ -109,7 +109,7 @@
 }
 
 .star {
-  color: #777;
+  color:white;
 }
 
 .starActive {
