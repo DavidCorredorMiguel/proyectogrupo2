@@ -16,7 +16,7 @@ const Home = () => {
 
       <section className="home-featured">
         <h2 className="home-featured-title">Productos destacados</h2>
-        <ProductList 
+        <ProductList showSorting={false}
           products={destacados} 
           showPagination={false} 
           showFilters={false}
