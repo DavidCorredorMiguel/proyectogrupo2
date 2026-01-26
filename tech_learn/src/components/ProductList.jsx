@@ -396,12 +396,12 @@ const ProductList = ({
               </div>
             </div>
           )}
-          {showFilters && mostViewedProducts.length > 0 && (
-            <RecommendationRow title=" Los más vistos"
-              products={mostViewedProducts} />
-          )}
         </div>
       </div>
+      {showFilters && mostViewedProducts.length > 0 && (
+        <RecommendationRow title=" Los más vistos"
+          products={mostViewedProducts} />
+      )}
     </div>
   );
 };
