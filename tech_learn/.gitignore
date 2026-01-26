@@ -23,9 +23,20 @@ dist-ssr
 *.sln
 *.sw?
 
+# Node dependencies
 node_modules/
 .firebase/
 .firebaserc
 firebase.json
 *.pptx
 
+# Environment variables
+.env
+
+# Firebase
+.firebase/
+.firebaserc
+firebase.json
+
+# Otros
+*.pptx
