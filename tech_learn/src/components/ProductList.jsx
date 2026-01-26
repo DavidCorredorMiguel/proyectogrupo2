@@ -6,9 +6,8 @@ import { addProductToCart } from "../mocks/cartService";
 import { toggleFavorite, isFavorite } from "../mocks/favoritesService";
 import RecommendationRow from "./RecommendationRow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCartPlus, faHeart, faTimes, faTag, faSort,
-  faSortAmountDown, faSortAmountUp
+import { faCartPlus, faHeart, faTimes, faTag, faSort,
+  faSortAmountDown, faSortAmountUp, faChevronLeft, faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 const ProductList = ({
   products, viewMode = "grid",
@@ -380,18 +379,17 @@ const ProductList = ({
                 <button onClick={() => setCurrentPage(currentPage - 1)}
                   disabled={currentPage === 1}
                   className="px-4 py-2 text-white rounded bg-orange-500 
-                    hover:bg-orange-600 disabled:opacity-50">
-                  ⬅ Anterior
+                    hover:bg-orange-600 disabled:opacity-50 flex items-center gap-2">
+                  <FontAwesomeIcon icon={faChevronLeft} /> Anterior
                 </button>
                 <span className="font-semibold">
                   Página {currentPage} de {totalPages}
                 </span>
-                <button
-                  onClick={() => setCurrentPage(currentPage + 1)}
+                <button onClick={() => setCurrentPage(currentPage + 1)}
                   disabled={indexOfLastProduct >= filteredProducts.length}
                   className="px-4 py-2 text-white rounded bg-orange-500 
-                    hover:bg-orange-600 disabled:opacity-50">
-                  Siguiente ➡
+                    hover:bg-orange-600 disabled:opacity-50 flex items-center gap-2">
+                  Siguiente <FontAwesomeIcon icon={faChevronRight} />
                 </button>
               </div>
             </div>
