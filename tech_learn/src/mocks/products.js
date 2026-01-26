@@ -148,11 +148,11 @@ export const mockProducts = [
       { user: "Mario", rating: 4, comment: "Muy completa.", date: "2025-12-11" },
     ],
   },
-
   // productos simples también con reviews
   {
     id: 7,
     name: "Silla Ergonómica",
+    category: "Otros",
     price: 199.5,
     image: "/images/silla.png",
     description: "Soporte lumbar ajustable y malla transpirable.",

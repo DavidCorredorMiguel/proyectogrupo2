@@ -6,12 +6,13 @@ import { addProductToCart } from "../mocks/cartService";
 import { toggleFavorite, isFavorite } from "../mocks/favoritesService";
 import RecommendationRow from "./RecommendationRow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
-
+import {
+  faCartPlus, faHeart, faTimes, faTag, faSort,
+  faSortAmountDown, faSortAmountUp
+} from "@fortawesome/free-solid-svg-icons";
 const ProductList = ({
   products, viewMode = "grid",
-  showPagination = true,
-  showFilters = true,
+  showPagination = true, showFilters = true, showSorting = true,
   userId = "user123",
 }) => {
   const [, setCart] = useState([]);
@@ -23,15 +24,21 @@ const ProductList = ({
   const [priceRange, setPriceRange] = useState({ min: 0, max: Infinity });
   const [customMin, setCustomMin] = useState("");
   const [customMax, setCustomMax] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [sortBy, setSortBy] = useState("none"); // none, price-asc, price-desc, rating-asc, rating-desc
 
   const displayProducts = products || mockProducts;
+  // Extraer categorías únicas
+  const categories = useMemo(() => {
+    const uniqueCategories = [...new Set(displayProducts.map(p => p.category))];
+    return uniqueCategories.sort();
+  }, [displayProducts]);
   useEffect(() => {
     fetch("https://techbot-backend-ekam.onrender.com/products/most-viewed")
       .then((r) => r.json())
       .then((data) => {
         setTopViewedIds(data.map((x) => x.id));
-      })
-      .catch(() => { });
+      }).catch(() => { });
   }, []);
   useEffect(() => {
     const favs = {};
@@ -42,11 +49,9 @@ const ProductList = ({
     setFavorites(favs);
   }, [userId, displayProducts]);
   const getAvgRating = (product) => product.reviews?.length
-    ? product.reviews.reduce((s, r) => s + r.rating, 0) / product.reviews.length
-    : 0;
+    ? product.reviews.reduce((s, r) => s + r.rating, 0) / product.reviews.length : 0;
   const mostViewedProducts = topViewedIds
-    .map((id) => mockProducts.find((p) => p.id === id))
-    .filter(Boolean).slice(0, 6);
+    .map((id) => mockProducts.find((p) => p.id === id)).filter(Boolean).slice(0, 6);
   const priceRanges = [
     { label: "Todos los precios", min: 0, max: Infinity },
     { label: "Hasta 50€", min: 0, max: 50 },
@@ -57,14 +62,27 @@ const ProductList = ({
   ];
   const filteredProducts = useMemo(() => {
     if (!showFilters) return displayProducts;
-    return displayProducts.filter(
-      (p) => p.price >= priceRange.min && p.price <= priceRange.max
-    );
-  }, [displayProducts, priceRange, showFilters]);
+    let filtered = displayProducts.filter((p) => {
+      const matchesPrice = p.price >= priceRange.min && p.price <= priceRange.max;
+      const matchesCategory = selectedCategory === "all" || p.category === selectedCategory;
+      return matchesPrice && matchesCategory;
+    });
+    // Aplicar ordenamiento
+    if (sortBy === "price-asc") {
+      filtered = [...filtered].sort((a, b) => a.price - b.price);
+    } else if (sortBy === "price-desc") {
+      filtered = [...filtered].sort((a, b) => b.price - a.price);
+    } else if (sortBy === "rating-asc") {
+      filtered = [...filtered].sort((a, b) => getAvgRating(a) - getAvgRating(b));
+    } else if (sortBy === "rating-desc") {
+      filtered = [...filtered].sort((a, b) => getAvgRating(b) - getAvgRating(a));
+    }
+    return filtered;
+  }, [displayProducts, priceRange, selectedCategory, showFilters, sortBy]);
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentPage(1);
-  }, [priceRange]);
+  }, [priceRange, selectedCategory]);
   const handleAddToCart = (product) => {
     const updated = addProductToCart(product);
     setCart(updated);
@@ -72,8 +90,7 @@ const ProductList = ({
   const handleToggleFavorite = (productId) => {
     toggleFavorite(userId, productId);
     setFavorites((prev) => ({
-      ...prev,
-      [productId]: !prev[productId],
+      ...prev, [productId]: !prev[productId],
     }));
   };
   const handlePriceRangeClick = (min, max) => {
@@ -87,6 +104,15 @@ const ProductList = ({
     const max = customMax === "" ? Infinity : Number(customMax);
     setPriceRange({ min, max });
   };
+  const handleClearFilters = () => {
+    setPriceRange({ min: 0, max: Infinity });
+    setSelectedCategory("all");
+    setCustomMin("");
+    setCustomMax("");
+    setSortBy("none");
+  };
+  const hasActiveFilters = priceRange.min !== 0 || priceRange.max !== Infinity
+    || selectedCategory !== "all" || sortBy !== "none";
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = filteredProducts.slice(
@@ -101,30 +127,71 @@ const ProductList = ({
         {showFilters && (
           <aside className="w-full lg:w-64 flex-shrink-0">
             <div className="bg-white rounded-xl shadow-lg lg:sticky lg:top-4 border border-gray-100">
-              <div className="bg-gradient-to-r from-teal-600 to-teal-500 px-4 py-3 rounded-t-xl">
+              {/* Botón de limpiar filtros */}
+              {hasActiveFilters && (
+                <div className="px-4 pt-4">
+                  <button
+                    onClick={handleClearFilters}
+                    className="w-full bg-red-50 text-red-600 py-2.5 rounded-lg text-sm font-semibold 
+                      hover:bg-red-100 transition-all border border-red-200 flex items-center justify-center gap-2">
+                    <FontAwesomeIcon icon={faTimes} />Limpiar filtros
+                  </button>
+                </div>
+              )}
+              {/* FILTRO DE CATEGORÍAS */}
+              <div className="bg-gradient-to-r from-purple-600 to-purple-500 px-4 py-3 rounded-t-xl mt-4">
+                <h3 className="font-bold text-white flex items-center gap-2">
+                  <FontAwesomeIcon icon={faTag} />Categorías
+                </h3>
+              </div>
+              <div className="p-4 border-b border-gray-100">
+                <ul className="space-y-1">
+                  <li>
+                    <button onClick={() => setSelectedCategory("all")}
+                      className={`w-full text-left pl-1 pr-2 py-2.5 rounded-lg transition-all text-sm flex items-center gap-2
+                        ${selectedCategory === "all"
+                          ? "bg-purple-50 text-purple-700 font-semibold border-l-4 border-purple-600 shadow-sm"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-4 border-transparent"
+                        }`}>
+                      <FontAwesomeIcon icon={faTag} />Todas las categorías
+                    </button>
+                  </li>
+                  {categories.map((category) => (
+                    <li key={category}>
+                      <button onClick={() => setSelectedCategory(category)}
+                        className={`w-full text-left pl-1 pr-2 py-2.5 rounded-lg transition-all text-sm flex items-center gap-2
+                          ${selectedCategory === category
+                            ? "bg-purple-50 text-purple-700 font-semibold border-l-4 border-purple-600 shadow-sm"
+                            : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-4 border-transparent"
+                          }`}>
+                        <FontAwesomeIcon icon={faTag} />{category}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              {/* FILTRO DE PRECIO */}
+              <div className="bg-gradient-to-r from-teal-600 to-teal-500 px-4 py-3">
                 <h3 className="font-bold text-white flex items-center gap-2">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                       d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 
                         00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                  </svg>
-                  Filtrar por precio
+                  </svg>Filtrar por precio
                 </h3>
               </div>
-
               <div className="p-4">
                 <ul className="space-y-1 mb-4">
                   {priceRanges.map((range, index) => (
                     <li key={index}>
-                      <button
-                        onClick={() => handlePriceRangeClick(range.min, range.max)}
-                        className={`w-full text-left px-3 py-2.5 rounded-lg transition-all text-sm flex items-center gap-3
+                      <button onClick={() => handlePriceRangeClick(range.min, range.max)}
+                        className={`w-full text-left pl-1 pr-2 py-2.5 rounded-lg transition-all 
+                          text-sm flex items-center gap-2
                           ${priceRange.min === range.min && priceRange.max === range.max
                             ? "bg-teal-50 text-teal-700 font-semibold border-l-4 border-teal-600 shadow-sm"
                             : "text-gray-600 hover:bg-gray-50 hover:text-gray-900 border-l-4 border-transparent"
                           }`}>
-                        <FontAwesomeIcon icon={faCartPlus} />
-                        {range.label}
+                        <FontAwesomeIcon icon={faCartPlus} />{range.label}
                       </button>
                     </li>
                   ))}
@@ -147,8 +214,7 @@ const ProductList = ({
                         d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 
                         0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 
                         12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    Rango personalizado
+                    </svg>Rango personalizado
                   </p>
                   <form onSubmit={handleCustomPriceSubmit} className="space-y-3">
                     <div className="flex gap-2 items-center">
@@ -160,8 +226,7 @@ const ProductList = ({
                           }
                           className="w-full px-3 py-2.5 pr-8 border border-gray-200 rounded-lg text-sm
                             focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
-                            bg-white transition-all text-gray-800"
-                        />
+                            bg-white transition-all text-gray-800" />
                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 
                           text-sm pointer-events-none">€</span>
                       </div>
@@ -174,8 +239,7 @@ const ProductList = ({
                           }
                           className="w-full px-3 py-2.5 pr-8 border border-gray-200 rounded-lg text-sm
                             focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent
-                            bg-white transition-all text-gray-800"
-                        />
+                            bg-white transition-all text-gray-800" />
                         <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 
                           text-sm pointer-events-none">€</span>
                       </div>
@@ -183,8 +247,7 @@ const ProductList = ({
                     <button type="submit"
                       className="w-full bg-gradient-to-r from-teal-600 to-teal-500 text-white py-2.5 rounded-lg text-sm
                         font-semibold hover:from-teal-700 hover:to-teal-600 transition-all
-                        shadow-md hover:shadow-lg active:scale-[0.98]">
-                      Aplicar filtro
+                        shadow-md hover:shadow-lg active:scale-[0.98]">Aplicar filtro
                     </button>
                   </form>
                 </div>
@@ -202,14 +265,53 @@ const ProductList = ({
         )}
         {/* CONTENIDO PRINCIPAL */}
         <div className="flex-1 min-w-0">
+          {/* BARRA DE ORDENAMIENTO */}
+          {showSorting && (
+            <div className="bg-white rounded-lg shadow-md p-4 mb-4 flex items-center gap-3 flex-wrap">
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon icon={faSort} className="text-gray-600" />
+                <span className="font-semibold text-gray-700 text-sm">Ordenar por:</span>
+              </div>
+              <div className="flex gap-2 flex-wrap">
+                <button
+                  onClick={() => setSortBy("none")}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${sortBy === "none"
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}>
+                  Predeterminado
+                </button>
+                <button
+                  onClick={() => setSortBy(sortBy === "price-asc" ? "price-desc" : "price-asc")}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 
+                    ${sortBy === "price-asc" || sortBy === "price-desc"
+                      ? "bg-green-600 text-white shadow-md"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}>
+                  <FontAwesomeIcon icon={sortBy === "price-asc" ? faSortAmountUp : faSortAmountDown} />
+                  Precio {sortBy === "price-asc" ? "(más barato)" : sortBy === "price-desc" ? "(más caro)" : ""}
+                </button>
+                <button
+                  onClick={() => setSortBy(sortBy === "rating-desc" ? "rating-asc" : "rating-desc")}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 
+                    ${sortBy === "rating-asc" || sortBy === "rating-desc"
+                      ? "bg-yellow-600 text-white shadow-md"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}>
+                  <FontAwesomeIcon icon={sortBy === "rating-desc" ? faSortAmountDown : faSortAmountUp} />
+                  Valoración {sortBy === "rating-desc" ? "(más valorado)" : sortBy === "rating-asc" ? "(menos valorado)" : ""}
+                </button>
+              </div>
+            </div>
+          )}
           {filteredProducts.length === 0 ? (
             <div className="bg-white rounded-lg shadow-md p-8 text-center">
-              <p className="text-gray-500 text-lg">
-                No hay productos en este rango de precio
+              <p className="text-gray-500 text-lg mb-2">
+                No hay productos que coincidan con los filtros seleccionados
               </p>
-              <button onClick={() => handlePriceRangeClick(0, Infinity)}
-                className="mt-4 text-teal-600 hover:underline font-semibold">
-                Ver todos los productos
+              <button onClick={handleClearFilters}
+                className="mt-4 px-6 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 
+                  font-semibold transition-colors">Limpiar filtros
               </button>
             </div>
           ) : viewMode === "list" ? (
@@ -244,14 +346,11 @@ const ProductList = ({
                         </span>
                       </div>
                       <div className="flex items-center justify-between gap-2">
-                        <p className="text-xl font-bold text-blue-600">
-                          {product.price}€
-                        </p>
+                        <p className="text-xl font-bold text-blue-600">{product.price}€</p>
                         <button onClick={() => handleAddToCart(product)}
                           className="btn btn-primary px-4 py-2 bg-blue-500 text-white rounded-lg 
                             hover:bg-blue-600 transition-colors shadow-sm whitespace-nowrap">
-                          <FontAwesomeIcon icon={faCartPlus} className="me-2" />
-                          Añadir
+                          <FontAwesomeIcon icon={faCartPlus} className="me-2" />Añadir
                         </button>
                       </div>
                     </div>
@@ -282,7 +381,7 @@ const ProductList = ({
                   disabled={currentPage === 1}
                   className="px-4 py-2 text-white rounded bg-orange-500 
                     hover:bg-orange-600 disabled:opacity-50">
-                    ⬅ Anterior
+                  ⬅ Anterior
                 </button>
                 <span className="font-semibold">
                   Página {currentPage} de {totalPages}
@@ -306,7 +405,6 @@ const ProductList = ({
     </div>
   );
 };
-
 ProductList.propTypes = {
   products: PropTypes.arrayOf(
     PropTypes.shape({
@@ -321,7 +419,7 @@ ProductList.propTypes = {
   viewMode: PropTypes.oneOf(["grid", "list"]),
   showPagination: PropTypes.bool,
   showFilters: PropTypes.bool,
+  showSorting: PropTypes.bool,
   userId: PropTypes.string,
 };
-
 export default ProductList;
