@@ -3,32 +3,27 @@ import { faCartPlus, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { toggleFavorite, isFavorite } from "../mocks/favoritesService";
-
 const getAverageRating = (reviews = []) => {
   if (!reviews.length) return 0;
   return reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length;
 };
-
 const ProductCard = ({ product, onAddToCart, userId = "user123", onFavoriteToggle }) => {
   const avgRating = getAverageRating(product.reviews);
   const [isFav, setIsFav] = useState(false);
-
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsFav(isFavorite(userId, product.id));
   }, [userId, product.id]);
-
   const handleToggleFavorite = (e) => {
     e.preventDefault();
     console.log("Toggling favorite:", product.id, "User:", userId); // Debug
     toggleFavorite(userId, product.id);
     setIsFav(!isFav);
-    
     // Notificar al componente padre si existe el callback
     if (onFavoriteToggle) {
       onFavoriteToggle(product.id);
     }
   };
-
   return (
     <div className="h-full flex flex-col rounded-lg border border-gray-200 bg-white 
       shadow-sm hover:shadow-md transition relative">
@@ -60,15 +55,13 @@ const ProductCard = ({ product, onAddToCart, userId = "user123", onFavoriteToggl
             {avgRating.toFixed(1)}
           </span>
         </div>
-
         <div className="mt-auto flex items-center justify-between">
           <span className="text-xl font-bold text-blue-600">
             {product.price}€
           </span>
           <button className="btn btn-primary hover:scale-105 transition-all"
             onClick={() => onAddToCart(product)}>
-            <FontAwesomeIcon icon={faCartPlus} className="me-2" />
-            Añadir
+            <FontAwesomeIcon icon={faCartPlus} className="me-2" />Añadir
           </button>
         </div>
       </div>
