@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 import { getCart, updateQuantity, removeProduct } from "../mocks/cartService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
+<FontAwesomeIcon icon={faShoppingCart} />;
+
 import { useNavigate } from "react-router-dom";
 
 const CestaProduct = () => {
@@ -31,7 +37,10 @@ const CestaProduct = () => {
 
   return (
     <div className="container my-5">
-      <h2 className="mb-4 fw-bold">🛒 Tu cesta</h2>
+      <h2 className="font-bold text-2xl flex items-center gap-2 text-teal-800">
+        <FontAwesomeIcon icon={faShoppingCart} className="text-teal-800" />
+        Tu cesta
+      </h2>
 
       {cart.length === 0 ? (
         <div className="alert alert-info">No hay productos en la cesta.</div>
@@ -40,8 +49,7 @@ const CestaProduct = () => {
           {/* LISTA PRODUCTOS */}
           <div className="col-lg-8">
             {cart.map((item) => (
-              <div key={item.id} className="card mb-3 shadow-sm border"
->
+              <div key={item.id} className="card mb-3 shadow-sm border">
                 <div className="card-body">
                   <div className="row align-items-center">
                     {/* IMAGEN */}
@@ -76,11 +84,11 @@ const CestaProduct = () => {
                           ))}
                         </select>
 
-                        <button
-                          className="btn btn-danger btn-sm ms-3"
-                          onClick={() => handleRemove(item.id)}
-                        >
-                          Eliminar
+                        <button onClick={() => handleRemove(item.id)}>
+                          <FontAwesomeIcon
+                            icon={faTrash}
+                            className="text-red-500"
+                          />
                         </button>
                       </div>
                     </div>
