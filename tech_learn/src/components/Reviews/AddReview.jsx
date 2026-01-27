@@ -19,12 +19,11 @@ const AddReview = ({ onAddReview }) => {
   return (
     <form className={styles.addReview} onSubmit={handleSubmit}>
       <h4>Escribe tu reseña</h4>
-
-      <div className={styles.starSelector}>
+      <div className={styles.starsContainer}>
         {[1, 2, 3, 4, 5].map((n) => (
           <span
             key={n}
-            className={n <= rating ? styles.starActive : styles.star}
+            className={n <= rating ? styles.starActive : styles.starInactive}
             onClick={() => setRating(n)}
           >
             ★

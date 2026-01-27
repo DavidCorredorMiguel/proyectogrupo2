@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { mockProducts } from "../mocks/products";
+import { useAuthStore } from "../store/authStore";
 import Reviews from "../components/Reviews/Reviews";
 import styles from "../styles/DetallesProducto.module.css";
 import RecommendationRow from "../components/RecommendationRow";
 
 export default function DetalleProducto() {
   const { id } = useParams();
-
+  const user = useAuthStore((state) => state.user);
   const product = mockProducts.find((p) => p.id === Number(id));
 
   useEffect(() => {
@@ -90,7 +91,7 @@ export default function DetalleProducto() {
           {/* RESEÑAS */}
           <section className={styles.section}>
             <div className={styles.contentBlock}>
-              <Reviews reviews={product.reviews} />
+              <Reviews productId={product.id} />
             </div>
           </section>
         </div>

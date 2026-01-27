@@ -1,10 +1,12 @@
-/* RESEÑAS */
+/* CONTENEDOR */
 .reviewsContainer {
   max-width: 520px;
   width: 100%;
   margin-top: 2rem;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* RESUMEN */
 .reviews {
   display: flex;
   align-items: center;
@@ -21,13 +23,10 @@
 
 .totalReviews {
   font-size: 0.85rem;
-  color: #666;
-  margin: 0.5rem 0 1rem;
+  color: #333; /* antes black */
 }
 
-/* ===========================
-   BARRAS RATING
-=========================== */
+/* BARRAS */
 .ratingBars {
   display: flex;
   flex-direction: column;
@@ -42,8 +41,8 @@
   font-size: 0.85rem;
 }
 
-.ratingRowActive {
-  background: #f0faff;
+.ratingStars {
+  color: #1a73e8;
 }
 
 .bar {
@@ -56,6 +55,7 @@
 .barFill {
   height: 100%;
   background: #1a73e8;
+  transition: width 0.3s ease;
 }
 
 .percent {
@@ -63,9 +63,7 @@
   color: #007185;
 }
 
-/* ===========================
-   RESEÑAS
-=========================== */
+/* LISTA DE RESEÑAS */
 .reviewsList {
   margin-top: 2rem;
 }
@@ -75,6 +73,7 @@
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1rem;
+  background: #fff; /* mejora en modo claro */
 }
 
 .reviewHeader {
@@ -92,13 +91,18 @@
 
 .reviewComment {
   font-size: 0.9rem;
-  color: #555;
+  color: #444; /* antes #ccc → invisible en claro */
 }
 
+.reviewDate {
+  color: #666;
+}
+
+/* FORMULARIO */
 .addReview {
   margin-top: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid #333;
+  border-top: 1px solid #ddd; /* antes white */
 }
 
 .starSelector {
@@ -108,8 +112,8 @@
   cursor: pointer;
 }
 
-.star {
-  color: #777;
+.starInactive {
+  color: #bbb; /* antes black → demasiado fuerte */
 }
 
 .starActive {
@@ -121,10 +125,20 @@
   min-height: 80px;
   margin: 0.8rem 0;
   padding: 0.6rem;
-  background: #111;
-  color: white;
-  border: 1px solid #333;
+  background: #f7f7f7; /* antes #111 → mal en claro */
+  color: #222;
+  border: 1px solid #ccc;
   border-radius: 6px;
+}
+
+.verifiedBadge {
+  margin-left: 8px;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: #1a73e8;
+  color: white;
+  font-weight: 600;
 }
 
 .addReview button {
@@ -135,15 +149,63 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
 .addReview button:hover {
   background: #1669c1;
 }
 
-.viewMoreBtn {
-  margin-top: 2rem;
+/* ===========================
+   MODO OSCURO
+=========================== */
+.oscuro {
+  background: #121212;
+  color: #f1f1f1;
 }
 
-.infoToggle {
-  display: block;
-  margin-top: 1rem;
+.oscuro .review {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+.oscuro .reviewComment {
+  color: #ccc;
+}
+
+.oscuro .reviewDate {
+  color: #aaa;
+}
+
+.oscuro .starActive {
+  color: #ffd700;
+}
+
+.oscuro .starInactive {
+  color: #555;
+}
+
+.oscuro .bar {
+  background: #333;
+}
+
+.oscuro .barFill {
+  background: #4da3ff;
+}
+
+.oscuro .reviewRating {
+  color: #ffd700;
+}
+
+.oscuro .addReview {
+  border-top-color: #333;
+}
+
+.oscuro .addReview textarea {
+  background: #1a1a1a;
+  color: #f1f1f1;
+  border-color: #444;
+}
+
+.oscuro .verifiedBadge {
+  background: #ffd700;
+  color: #222;
 }

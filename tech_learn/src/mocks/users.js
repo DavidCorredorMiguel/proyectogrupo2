@@ -30,10 +30,18 @@ export const registerUser = (name, email, password) => {
 export const loginUser = (email, password) => {
   const users = getUsers();
 
-  return (
-    users.find((u) => u.email === email && u.password === password) || null
+  const usuario = users.find(
+    (u) => u.email === email && u.password === password
   );
+
+  if (usuario) {
+    // Guardar usuario activo
+    localStorage.setItem("usuarioActual", JSON.stringify(usuario));
+  }
+
+  return usuario || null;
 };
+
 
 //RECUPERAR CONTRASEÑA//
 export const updatePassword = (email, newPassword) => {
@@ -53,5 +61,6 @@ export const updatePassword = (email, newPassword) => {
 
   return updatedUser;
 };
+
 
 
