@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { mockQuestions } from '../mocks/mocksQuestion';
+import { mockQuestions } from '../mocks/mockQuestions';
 
 export default function TarjetasAprender() {
   const [selectedAnswers, setSelectedAnswers] = useState({});

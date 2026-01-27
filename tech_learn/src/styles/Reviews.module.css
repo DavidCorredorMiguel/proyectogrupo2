@@ -23,7 +23,8 @@
 
 .totalReviews {
   font-size: 0.85rem;
-  color: #333; /* antes black */
+  color:white;
+  margin: 0.5rem 0 1rem;
 }
 
 /* BARRAS */
@@ -91,7 +92,7 @@
 
 .reviewComment {
   font-size: 0.9rem;
-  color: #444; /* antes #ccc → invisible en claro */
+  color:white;
 }
 
 .reviewDate {
@@ -112,8 +113,8 @@
   cursor: pointer;
 }
 
-.starInactive {
-  color: #bbb; /* antes black → demasiado fuerte */
+.star {
+  color:white;
 }
 
 .starActive {
